@@ -1,0 +1,18 @@
+{
+  "name": "manuciaocv",
+  "version": "1.0.0",
+  "description": "manuciao curriculum vitae",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run build-css",
+    "build-css": "node-sass --include-path node_modules ./manuciaocv/static/scss/index.scss ./manuciaocv/static/css/manuciaocv.css",
+    "watch-sass": "npm run build-css && node-sass --include-path node_modules ./manuciaocv/static/scss/index.scss -w ./manuciaocv/static/css/manuciaocv.css",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "ManuCiao",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^5.0.0",
+    "node-sass": "^5.0.0"
+  }
+}

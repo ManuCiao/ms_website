@@ -1,24 +1,27 @@
 MS website as Product Manager
+------------------------------
+#### Create virtual environment
 
-Create virtual environment
-
-```python 
+```python
 python3 -m pip install --user virtualenv
 python3 -m venv wbmanu
 ```
 
 Activate virtual env
-```python 
+
+```python
 source wbmanu/bin/activate
 ```
 
 Deactivate virtual env
-```python 
+
+```python
 deactivate
 ```
 
-How to install wagtail
-```python 
+#### How to install wagtail
+
+```python
 pip install wagtail
 wagtail start manuciaocv
 cd manuciaocv
@@ -28,9 +31,56 @@ python manage.py createsuperuser
 python manage.py runserver
 ```
 
+#### Use SCSS/SASS in my django project
 
+```js
+nvm install 0.35.3
+npm init
+```
 
-ref: 
+To create package.json
+
+```js
+npm init
+```
+
+Then, please install node-sass package using npm, node-sass is a tool which can help us combine SCSS to CSS
+
+```js
+npm install node-sass
+npm install bootstrap
+```
+
+#### To run NVM
+
+run in one terminal these commands:
+
+```js
+npm install    (it will install the node modules locally)
+npm run build  (it will update the frontend locally)
+npm run watch-sass (to watch the changes to the sass files)
+```
+
+and in another one:
+
+```sh
+source wbmanu/bin/activate
+python manage.py runserver
+```
+
+#### Update the Website Style LOCALLY
+
+If you want to update the stylesheet of the website remember to update the relative SCSS files and run:
+
+before running npm v.8.11.4 update the bashrc as it has been referred above.
+
+```sh
+npm run build
+python manage.py collectstatic --no-input
+```
+
+ref:
+
 - [Installing packages using pip and virtual environments](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)
 - [https://github.com/AccordBox/django-heroku-docker](https://github.com/AccordBox/django-heroku-docker)
-- 
+- [https://www.accordbox.com/blog/how-use-scsssass-your-django-project-npm-way/](https://www.accordbox.com/blog/how-use-scsssass-your-django-project-npm-way/)
