@@ -4,6 +4,15 @@
 <html class="no-js" lang="en">
     <head>
         <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="Portfolio">
+		<meta name="keywords" content="Creative, minimal, Portfolio, cv, business, Resume, Information, personal portfolio, Professional">
+		<meta name="author" content="kamleshyadav">
+		<meta name="MobileOptimized" content="320">
+        
+        <!-- Favicon Link -->
+		<link rel="shortcut icon" type="image/png" href="{% static 'images/favicon.png' %}">
+
         <title>
             {% block title %}
                 {% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}
@@ -18,7 +27,16 @@
         <meta name="viewport" content="width=device-width, initial-scale=1" />
 
         {# Global stylesheets #}
-        <link rel="stylesheet" type="text/css" href="{% static 'css/manuciaocv.css' %}">
+		<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+		<link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+		<link rel="stylesheet" href="{% static 'css/font.css' %}">
+		<link rel="stylesheet" href="{% static 'css/animate.css' %}">
+		<link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+		<link rel="stylesheet" href="{% static 'css/swiper.min.css' %}">
+		<link rel="stylesheet" href="{% static 'css/jquery-jvectormap-2.0.3.css' %}">
+		<link rel="stylesheet" href="{% static 'css/style.css' %}">
+		<link rel="stylesheet" href="{% static 'css/scrollbar.css' %}">
+        <!-- <link rel="stylesheet" type="text/css" href="{% static 'css/manuciaocv.css' %}"> -->
 
         {% block extra_css %}
             {# Override this in templates to add extra stylesheets #}
@@ -31,7 +49,22 @@
         {% block content %}{% endblock %}
 
         {# Global javascript #}
-        <script type="text/javascript" src="{% static 'js/manuciaocv.js' %}"></script>
+        <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+        <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/cvtext1.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/cvtext2.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/isotope.pkgd.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/swiper.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/circle-progress.js' %}"></script>
+        <!-- JQUERY-JVECTORMAP JS -->
+        <script type="text/javascript" src="{% static 'js/jquery-jvectormap.min.js' %}"></script>
+        <!-- JVECTORMAP-WORLD-MILL.JS JS -->
+        <script type="text/javascript" src="{% static 'js/jquery-jvectormap-world-mill.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/scrollbar.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/custom.js' %}"></script>
+        <!-- <script type="text/javascript" src="{% static 'js/manuciaocv.js' %}"></script> -->
 
         {% block extra_js %}
             {# Override this in templates to add extra javascript #}
