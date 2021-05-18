@@ -43,10 +43,27 @@
         {% endblock %}
     </head>
 
-    <body class="{% block body_class %}{% endblock %}">
+    <body>
         {% wagtailuserbar %}
+        <!-- preloader section start -->
+        <div class="preloader">
+            <div class="status"><img src="{% static 'images/loader.gif' %}" id="preloader_image" alt="loader">
+            </div>
+        </div>
 
-        {% block content %}{% endblock %}
+        {% block banner %}{% endblock %}
+
+        <main id="content" role="main">
+            {% block content %}{% endblock %}
+        </main>
+
+        {% include "includes/footer.html" %}
+
+        <!-- go to top button -->
+        <div class="bottom_top">
+            <i class="fas fa-arrow-up">
+            </i><i class="fas fa-arrow-up"></i>
+        </div>
 
         {# Global javascript #}
         <!-- jQuery first, then Popper.js, then Bootstrap JS -->

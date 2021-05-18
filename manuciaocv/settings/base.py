@@ -28,8 +28,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'manuciaocv.home',
-    'manuciaocv.search',
+    'home',
+    'search',
+    'flex',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',

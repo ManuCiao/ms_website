@@ -112,6 +112,40 @@ Ensure you can connect to your postgresql database then migrate:
 
     python3 manage.py migrate --run-syncdb
 
+
+### Create new app within the project
+
+```py
+python manage.py startapp <name>
+```
+
+Add the new app to the `manuciaocv/settings/base.py`
+
+Clean up the app by removing files that you don't need for the wagtail project, leave only:
+
+- the migrations folder
+- apps
+- models
+
+### Debug toolbar
+
+Most popular debug toolbars `django debug toolbar` and `pudb`
+
+```py
+pip install django-debug-toolbar
+
+pip install pudb
+## add on the code that you wish to debug
+import pudb; pu.db()
+```
+
+
+### Install all the required libraries for dev environment
+
+Install all the base requirements and the extra dev requirements
+
+    pip install -r dev.txt
+
 ref:
 
 - [Installing packages using pip and virtual environments](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)
