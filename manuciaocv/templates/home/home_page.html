@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static %}
+{% load static wagtailimages_tags %}
 
 {% block body_class %}template-homepage{% endblock %}
 
@@ -239,7 +239,8 @@
 
                                     <pattern id="banner_mimg" patternUnits="userSpaceOnUse" width="968px"
                                         height="945px">
-                                        <image class="cv_slide" xlink:href="http://via.placeholder.com/968x945"
+                                        {% image page.banner_personal_image fill-968x945 as ps_img %}
+                                        <image class="cv_slide" xlink:href="{{ ps_img.url }}" alt="Manuela Sabatino image"
                                             width="968px" height="945px" x=0 y=0></image>
                                     </pattern>
 
@@ -248,9 +249,9 @@
                             </div>
                         </div>
                         <div class="brc_hirebtn">
-                            <a href="javascript:;" class="portfolio_btn btn_orange">
-                                <span class="first_text">Hire Me</span>
-                                <span class="second_text">Hire</span>
+                            <a href="{{ page.button_03 }}" class="portfolio_btn btn_orange">
+                                <span class="first_text">{{ page.button_text_03_1 }}</span>
+                                <span class="second_text">{{ page.button_text_03_2 }}</span>
                             </a>
                         </div>
                     </div>
@@ -258,25 +259,25 @@
                 <div class="col-xl-12 col-lg-12 col-md-12 align-self-center">
                     <div class="banner_content">
                         <div class="bannner_leftpart">
-                            <h2 class="stranger">HELLO! <span class="stran">Stranger!</span></h2>
-                            <h1 class="banner_name ">Mr. John Weary</h1>
+                            <h2 class="stranger">HELLO! <span class="stran">{{ page.sub_text_up }}</span></h2>
+                            <h1 class="banner_name ">{{ page.lead_text }}</h1>
 
                             <p class="banner_pera"> Freelance </p>
                             <div class="banner_typingtext">
                                 <ul class="texts home-desc">
-                                    <li class="list-inline-item">Web & Mobile UI/UX Designer</li>
-                                    <li class="list-inline-item">Front End Developer</li>
-                                    <li class="list-inline-item">Web Designer & Developer</li>
+                                    <li class="list-inline-item">{{ page.sub_text_down_01 }}</li>
+                                    <li class="list-inline-item">{{ page.sub_text_down_02 }}</li>
+                                    <li class="list-inline-item">{{ page.sub_text_down_03 }}</li>
                                 </ul>
                             </div>
                             <div class="banner_btn">
-                                <a href="javascript:;" class="portfolio_btn btn_yellow">
-                                    <span class="first_text">Download CV</span>
-                                    <span class="second_text">Download</span>
+                                <a href="{{ page.button_01.url }}" class="portfolio_btn btn_yellow">
+                                    <span class="first_text">{{ page.button_text_01_1 }}</span>
+                                    <span class="second_text">{{ page.button_text_01_2 }}</span>
                                 </a>
-                                <a href="javascript:;" class="portfolio_btn btn_red">
-                                    <span class="first_text">Send Message</span>
-                                    <span class="second_text">Send</span>
+                                <a href="{{ page.button_02 }}" class="portfolio_btn btn_red">
+                                    <span class="first_text">{{ page.button_text_02_1 }}</span>
+                                    <span class="second_text">{{ page.button_text_02_2 }}</span>
                                 </a>
                             </div>
                         </div>
