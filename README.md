@@ -152,3 +152,5 @@ ref:
 - [https://github.com/AccordBox/django-heroku-docker](https://github.com/AccordBox/django-heroku-docker)
 - [https://www.accordbox.com/blog/how-use-scsssass-your-django-project-npm-way/](https://www.accordbox.com/blog/how-use-scsssass-your-django-project-npm-way/)
 - [https://medium.com/@ochieng.grace/migrate-wagtail-application-database-from-sqlite-to-postgresql-32f705f2f5f4](https://medium.com/@ochieng.grace/migrate-wagtail-application-database-from-sqlite-to-postgresql-32f705f2f5f4)
+- [https://project-awesome.org/springload/awesome-wagtail](https://project-awesome.org/springload/awesome-wagtail)
+-[https://docs.wagtail.io/en/stable/](https://docs.wagtail.io/en/stable/)

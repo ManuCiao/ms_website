@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% load static wagtailimages_tags %}
+{% load static wagtailimages_tags wagtailcore_tags %}
 
 {% block body_class %}template-homepage{% endblock %}
 
@@ -127,15 +127,15 @@
 
                                     <ul class="social-links">
                                         <li><a class="tip social-button" href="javascript:;"><i
-                                                    class="fab fa-facebook-f"></i></a></li>
+                                                    class="fab fa-github"></i></a></li>
                                         <li><a class="tip social-button" href="javascript:;"><i
                                                     class="fab fa-linkedin-in"></i></a></li>
                                         <li><a class="tip social-button" href="javascript:;"><i
-                                                    class="fab fa-whatsapp"></i></a></li>
+                                                    class="fab fa-medium"></i></a></li>
                                         <li><a class="tip social-button" href="javascript:;"><i
                                                     class="fab fa-twitter"></i></a></li>
                                         <li><a class="tip social-button" href="javascript:;"><i
-                                                    class="fab fa-instagram"></i></a></li>
+                                                    class="fab fa-figma"></i></a></li>
                                     </ul>
 
                                 </div>
@@ -162,11 +162,7 @@
                             <div class="signature_box">
                                 <div class="name">
                                     <h2>John Weary</h2>
-                                    <p>UI &amp; UX Designer</p>
-                                </div>
-
-                                <div class="signature">
-                                    <img src="http://via.placeholder.com/121x45" alt="image">
+                                    <p>Product Manager</p>
                                 </div>
                             </div>
                             <div class="anout_section_btn">
@@ -185,6 +181,7 @@
             </div>
         </div>
     </div> <!-- End about section  -->
+    
     <div class="port_education_setions prt_toppadder80 prt_bottompadder80 ">
         <!-- start Education section  -->
         <div class="education_section">
@@ -224,7 +221,7 @@
                                                     </div>
                                                 </div>
                                                 <h3 class="education_place"><span data-hover="Diploma"
-                                                        class="data_hover">Diploma </span> In UI/UX Design</h3>
+                                                        class="data_hover">Diploma In UI/UX Design</h3>
                                                 <p>Sed ut perspiciatis unde omnis iste natus error a sit voluptatem
                                                     accusantium doloremque are they laudantium,totam rem aperiam.</p>
 
@@ -1619,106 +1616,15 @@
         </div>
     </div>
     <!-- End responsers section  -->
-
-
-    <!-- start contact wrapper  -->
-    <div class="port_contact_wrapper prt_toppadder80 page_scroll" data-scroll="3" id="contact_sec">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="port_heading_wrapper text-center prt_bottompadder40">
-                        <div class="port_sub_heading_wrapper">
-                            <h2 class="port_sub_heading">Contact Us</h2>
-                        </div>
-                        <h1 class="port_heading">Get In Touch</h1>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="port_map_setions">
-            <!-- start map section  -->
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="map_box maxw-1000 mx-auto map-container">
-                            <div id="world-map" class="jvmap-smart"></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><!-- End map section  -->
-
-        <div class="port_contact_setions" id="scroll_contact">
-            <!-- start Contact section  -->
-            <div class="contact_section">
-                <div class="container">
-                    <div class="port_contact_mainbox">
-                        <div class="row">
-                            <div class="col-md-12 text-center prt_bottompadder40 ">
-                                <div class="port_hadding_style_sec ">
-                                    <h2 class="port_head_wrapper">My Contact</h2>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="port_contact_form">
-                                    <form>
-                                        <div class="row">
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <input type="text" name="first_name" class="form-control require"
-                                                        id="name" placeholder="First name">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <input type="text" name="last_name" class="form-control require"
-                                                        id="last-name" placeholder="Last name">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <input type="email" name="email" class="form-control require"
-                                                        id="email" placeholder="Email Address" data-valid="email"
-                                                        data-error="Email should be valid.">
-                                                </div>
-                                            </div>
-                                            <div class="col-sm-6">
-                                                <div class="form-group">
-                                                    <input type="text" name="subject" class="form-control require"
-                                                        id="subject" placeholder="Subject">
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="form-group">
-                                                    <textarea name="message" class="form-control require" rows="3"
-                                                        id="comment" placeholder="Message"></textarea>
-                                                </div>
-                                            </div>
-                                            <div class="col-12">
-                                                <div class="banner_btn">
-                                                    <button type="button" data-type="contact"
-                                                        class="portfolio_btn btn_red submitForm">
-                                                        <span class="first_text">Submit</span>
-                                                        <span class="second_text">Send</span>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="response"></div>
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div><!-- End Contact section  -->
-    </div><!-- End contact wrapper  -->
-
-
 </div>
 
 <!-- ================== End inner section ================== -->
 
 
 {% endblock banner %}
+
+{% block content %}
+    {% for block in page.body %}
+        {% include_block block %}
+    {% endfor %}
+{% endblock content %}

@@ -1,9 +1,11 @@
 from django.db import models
-from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel
+from wagtail.admin.edit_handlers import FieldPanel, PageChooserPanel, StreamFieldPanel
 from wagtail.core.models import Page
+from wagtail.core.fields import StreamField
 from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
 
+from streams import blocks
 
 class HomePage(Page):
     lead_text = models.CharField(
@@ -104,6 +106,11 @@ class HomePage(Page):
         on_delete=models.SET_NULL
     )
 
+    body = StreamField([
+        ("title", blocks.TitleBlock()),
+    ], null=True, blank=True)
+    
+
     content_panels = Page.content_panels + [
         FieldPanel("lead_text"),
         FieldPanel("sub_text_up"),
@@ -121,4 +128,5 @@ class HomePage(Page):
         FieldPanel("button_text_03_2"),
         ImageChooserPanel("banner_background_image"),
         ImageChooserPanel("banner_personal_image"),
+        StreamFieldPanel("body"),
     ]

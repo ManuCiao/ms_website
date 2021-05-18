@@ -12,7 +12,6 @@
   "author": "ManuCiao",
   "license": "ISC",
   "dependencies": {
-    "bootstrap": "^5.0.0",
     "node-sass": "^5.0.0"
   }
 }
