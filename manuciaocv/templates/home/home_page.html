@@ -29,7 +29,7 @@
                                     <pattern id="banner_mimg" patternUnits="userSpaceOnUse" width="968px"
                                         height="945px">
                                         {% image page.banner_personal_image fill-968x945 as ps_img %}
-                                        <image class="cv_slide" xlink:href="{{ ps_img.url }}" alt="Manuela Sabatino image"
+                                        <image class="cv_slide" xlink:href="{{ ps_img.url }}" alt="{{ ps_img.alt }}"
                                             width="968px" height="945px" x=0 y=0></image>
                                     </pattern>
 

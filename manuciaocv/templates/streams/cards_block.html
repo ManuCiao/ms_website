@@ -1,0 +1,13 @@
+{% for card in value.cards %}
+<h3>{{ card.title }}</h3>
+{% if card.text %}
+<p> {{ card.text }} </p>
+<hr>
+<hr>
+<hr>
+{% endif %}
+
+{% if card.link.url %}+<a href="{{ card.link.url }}"> {% endif %}
+    {{ card.link.link_text }}
+{% if card.link.url %}</a>{% endif %}
+{% endfor %}

@@ -6,3 +6,18 @@ Files inside this folder can contain global styles used in the project.
 /* Additonal Base Stylesheets */
 /* Components */
 /* Pages */
+.template-homepage .body img {
+  max-width: 100%;
+  height: auto; }
+
+.template-homepage .responsive-object {
+  position: relative; }
+
+.template-homepage .responsive-object iframe,
+.template-homepage .responsive-object object,
+.template-homepage .responsive-object embed {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; }

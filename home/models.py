@@ -108,6 +108,8 @@ class HomePage(Page):
 
     body = StreamField([
         ("title", blocks.TitleBlock()),
+        ("cards", blocks.CardsBlock()),
+        ("image_and_text", blocks.ImageAndTestBlock())
     ], null=True, blank=True)
     
 
