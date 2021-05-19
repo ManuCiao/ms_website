@@ -1,11 +1,14 @@
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
+from wagtail.snippets.blocks import SnippetChooserBlock
 from django import forms
 
+from testimonials.models import Testimonial
 
 class TitleBlock(blocks.StructBlock):
 
-    text = blocks.CharBlock(required=True, help_text="Text to display")
+    sub_heading = blocks.CharBlock(required=True, help_text="Enter sub-heading")
+    heading = blocks.CharBlock(required=True, help_text="Enter heading")
 
     class Meta:
         template = "streams/title_block.html"
@@ -81,8 +84,16 @@ class ImageAndTestBlock(blocks.StructBlock):
         icon = "image"
         label = "Image & Text"
 
-     
 
+class TestimonialBlock(blocks.StructBlock):
+    testimonial_snippet = SnippetChooserBlock(target_model='testimonials.Testimonial')
+
+class TestimonialsBlock(blocks.StructBlock):
+    title = TitleBlock(help_text="Enter heading and subheading")
+    testimonials = blocks.ListBlock(TestimonialBlock)
+
+    class Meta:
+        template = "streams/testimonial_block.html"
 
 ## about me block
 # image 445x490

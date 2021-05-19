@@ -4,6 +4,7 @@ from wagtail.core.models import Page
 from wagtail.core.fields import StreamField
 from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.images.edit_handlers import ImageChooserPanel
+from wagtail.snippets.blocks import SnippetChooserBlock
 
 from streams import blocks
 
@@ -109,7 +110,12 @@ class HomePage(Page):
     body = StreamField([
         ("title", blocks.TitleBlock()),
         ("cards", blocks.CardsBlock()),
-        ("image_and_text", blocks.ImageAndTestBlock())
+        ("image_and_text", blocks.ImageAndTestBlock()),
+        # ("testimonial", SnippetChooserBlock(
+        #     target_model='testimonials.Testimonial',
+        #     template='streams/testimonial_block.html'
+        # ))
+        ("testimonial", blocks.TestimonialsBlock())
     ], null=True, blank=True)
     
 

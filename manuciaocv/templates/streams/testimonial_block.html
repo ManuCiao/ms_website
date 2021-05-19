@@ -1,0 +1,66 @@
+{% load static wagtailimages_tags wagtailcore_tags %}
+
+<div class="port_testimonial_setions prt_toppadder80 prt_bottompadder80 page_scroll" data-scroll="2" id="testi_sec">
+    <!-- start testimonial section  -->
+    <div class="testimonial_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="port_heading_wrapper text-center prt_bottompadder40">
+                        <div class="port_sub_heading_wrapper">
+                            <h2 class="port_sub_heading">{{ value.title.sub_heading }}</h2>
+                        </div>
+                        <h1 class="port_heading">{{ value.title.heading }}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="port_test_data">
+                        <!-- Swiper -->
+                        <div class="swiper-container">
+                            <div class="swiper-wrapper">
+                                {% for testimonial in value.testimonials %}
+                                <div class="swiper-slide">
+                                    <div class="port_testimonial_box">
+                                        <div class="testimonial_top_box">
+                                            <div class="testimonial_img">
+                                                {% if testimonial.testimonial_snippet.image %}
+                                                <img src="{{ testimonial.testimonial_snippet.image.url }}"
+                                                    alt="{{ testimonial.testimonial_snippet.image.alt }}" class="img-fluid" />
+                                                {% endif %} 
+                                            </div>
+                                        </div>
+
+                                        <div class="testimonial_details_box">
+                                            <p>{{ testimonial.testimonial_snippet.quote }}</p>
+                                            <h3>{{ testimonial.testimonial_snippet.testimonial_name }}</h3>
+                                            <h4>{{ testimonial.testimonial_snippet.testimonial_profession }}</h4>
+                                            <div class="port_testi_quote">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"
+                                                    width="512px" height="512px" class="">
+                                                    <g>
+                                                        <g>
+                                                            <polygon points="0,4 0,28 12,16 12,4    "
+                                                                data-original="#030104" class="active-path"
+                                                                data-old_color="#f4f4f4" fill="#f4f4f4" />
+                                                            <polygon points="20,4 20,28 32,16 32,4    "
+                                                                data-original="#030104" class="active-path"
+                                                                data-old_color="#f4f4f4" fill="#f4f4f4" />
+                                                        </g>
+                                                    </g>
+                                                </svg>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div><!-- End testimonial section  -->

@@ -12,5 +12,5 @@ class TestimonialAdmin(ModelAdmin):
     menu_order = 290
     add_to_settings_menu = False
     exclude_from_explorer = False
-    list_display = ("quote", "testimonial_name", "testimonial_profession")
+    list_display = ("image","quote", "testimonial_name", "testimonial_profession")
     search_fields = ("quote", "testimonial_name", "testimonial_profession")
