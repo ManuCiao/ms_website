@@ -49,10 +49,3 @@ class ContactSettings(BaseSetting):
         FieldPanel("email"),
     ]
 
-
-## footer settings
-# footer_heading location p
-# footer_heading contact p
-# footer_heading contact url
-# footer_heading email p
-# footer_heading email url
