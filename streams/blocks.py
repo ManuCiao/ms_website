@@ -3,7 +3,6 @@ from wagtail.images.blocks import ImageChooserBlock
 from wagtail.snippets.blocks import SnippetChooserBlock
 from django import forms
 
-from testimonials.models import Testimonial
 
 class TitleBlock(blocks.StructBlock):
 
@@ -18,7 +17,7 @@ class TitleBlock(blocks.StructBlock):
 
 
 class LinkValue(blocks.StructValue):
-    """ Additional logic for our links """
+    """Additional logic for our links"""
 
     def url(self) -> str:
         internal_page = self.get("internal_page")
@@ -29,6 +28,7 @@ class LinkValue(blocks.StructValue):
             return external_link
         return ""
 
+
 class Link(blocks.StructBlock):
     link_text = blocks.CharBlock(max_length=50, default="More details")
     internal_page = blocks.PageChooserBlock(required=False)
@@ -37,18 +37,19 @@ class Link(blocks.StructBlock):
     class Meta:
         value_class = LinkValue
 
+
 class Card(blocks.StructBlock):
     title = blocks.CharBlock(max_length=100, help_text="Bold title text 100 max lenght")
-    text = blocks.TextBlock(max_length=255, help_text="Optional text of 255 characters", required=False)
+    text = blocks.TextBlock(
+        max_length=255, help_text="Optional text of 255 characters", required=False
+    )
     image = ImageChooserBlock(help_text="image cropped")
     link = Link(help_text="Enter an external link or select an internal page")
 
 
 class CardsBlock(blocks.StructBlock):
 
-    cards = blocks.ListBlock(
-        Card()
-    )
+    cards = blocks.ListBlock(Card())
 
     class Meta:
         template = "streams/cards_block.html"
@@ -60,22 +61,17 @@ class CardsBlock(blocks.StructBlock):
 class RadioSelectBlock(blocks.ChoiceBlock):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.field.widget = forms.RadioSelect(
-            choices=self.field.widget.choices
-        )
+        self.field.widget = forms.RadioSelect(choices=self.field.widget.choices)
 
 
 class ImageAndTestBlock(blocks.StructBlock):
     image = ImageChooserBlock()
     image_alignment = RadioSelectBlock(
-        choices=(
-            ("left", "imange to the left"),
-            ("right", "image to the right")
-        ),
-        default='left',
-        help_text='image with text'
+        choices=(("left", "imange to the left"), ("right", "image to the right")),
+        default="left",
+        help_text="image with text",
     )
-    title = blocks.CharBlock(max_length=60, help_text='Max length 60 characters')
+    title = blocks.CharBlock(max_length=60, help_text="Max length 60 characters")
     text = blocks.CharBlock(max_length=140, required=False)
     link = Link()
 
@@ -85,15 +81,9 @@ class ImageAndTestBlock(blocks.StructBlock):
         label = "Image & Text"
 
 
-class TestimonialBlock(blocks.StructBlock):
-    testimonial_snippet = SnippetChooserBlock(target_model='testimonials.Testimonial')
+class AboutMeBlock(blocks.StructBlock):
+    pass
 
-class TestimonialsBlock(blocks.StructBlock):
-    title = TitleBlock(help_text="Enter heading and subheading")
-    testimonials = blocks.ListBlock(TestimonialBlock)
-
-    class Meta:
-        template = "streams/testimonial_block.html"
 
 ## about me block
 # image 445x490
@@ -123,6 +113,10 @@ class TestimonialsBlock(blocks.StructBlock):
 # button 2 text 2
 
 
+class EducationBlock(blocks.StructBlock):
+    pass
+
+
 ## education block
 # port_sub_heading text
 # port_heading text
@@ -134,10 +128,18 @@ class TestimonialsBlock(blocks.StructBlock):
 # education_place richtext p
 
 
+class ProgressBarBlock(blocks.StructBlock):
+    pass
+
+
 ## progress bar block
 #### repeat block ####
 # data-percent text
 # circle span text
+
+
+class ExperienceBlock(blocks.StructBlock):
+    pass
 
 
 ## experience block
@@ -155,6 +157,10 @@ class TestimonialsBlock(blocks.StructBlock):
 # more_content p text
 
 
+class MyServicesBlock(blocks.StructBlock):
+    pass
+
+
 ## my services block
 # port_sub_heading text
 # port_heading text
@@ -163,6 +169,10 @@ class TestimonialsBlock(blocks.StructBlock):
 # image icon
 # project_heading text
 # project_pera text
+
+
+class MyProjectsBlock(blocks.StructBlock):
+    pass
 
 
 ## my projects block
@@ -176,16 +186,16 @@ class TestimonialsBlock(blocks.StructBlock):
 # grid-content span text
 
 
-## testimonials could be a block or admin??
-# port_sub_heading text
-# port_heading text
+class TestimonialBlock(blocks.StructBlock):
+    testimonial_snippet = SnippetChooserBlock(target_model="testimonials.Testimonial")
 
-#### repeat block ####
-# testimonial_img image
-# remove video
-# testimonial_details_box p text
-# testimonial_details_box h3 text
-# testimonial_details_box h4 text
+
+class TestimonialsBlock(blocks.StructBlock):
+    title = TitleBlock(help_text="Enter heading and subheading")
+    testimonials = blocks.ListBlock(TestimonialBlock)
+
+    class Meta:
+        template = "streams/testimonial_block.html"
 
 
 ## get in touch block
