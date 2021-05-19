@@ -1,3 +1,5 @@
+{% load static wagtailcore_tags%}
+
 <!-- start contact wrapper  -->
 <div class="port_contact_wrapper prt_toppadder80 page_scroll" data-scroll="3" id="contact_sec">
     <div class="container">
@@ -5,7 +7,7 @@
             <div class="col-md-12">
                 <div class="port_heading_wrapper text-center prt_bottompadder40">
                     <div class="port_sub_heading_wrapper">
-                        <h2 class="port_sub_heading">Contact Us</h2>
+                        <h2 class="port_sub_heading">Contact Me</h2>
                     </div>
                     <h1 class="port_heading">Get In Touch</h1>
                 </div>
@@ -176,8 +178,9 @@
 
                             </div>
                             <h2 class="footer_heading">Location</h2>
-                            <p>73 Southside Lane Los Angeles</p>
-                            <p>Joaquin d'Oeste - DF</p>
+                            {% if settings.site_settings.ContactSettings.location %}
+                            <p>{{ settings.site_settings.ContactSettings.location|richtext }}</p>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="col-sm-4 text-center">
@@ -229,8 +232,9 @@
                                 </svg>
                             </div>
                             <h2 class="footer_heading">Contact</h2>
-                            <p><a href="javascript:;">+(81)52 13698-5745</a></p>
-                            <p><a href="javascript:;">+(74)12 13698-7412</a></p>
+                            {% if settings.site_settings.ContactSettings.phone %}
+                            <p>{{ settings.site_settings.ContactSettings.phone|richtext }}</p>
+                            {% endif %}
                         </div>
                     </div>
                     <div class="col-sm-4 text-center">
@@ -285,8 +289,9 @@
                                 </svg>
                             </div>
                             <h2 class="footer_heading">Email</h2>
-                            <p><a href="javascript:;">yourname@gmail.com</a></p>
-                            <p><a href="javascript:;">companyname@gmail.com</a></p>
+                            {% if settings.site_settings.ContactSettings.email %}
+                            <p>{{ settings.site_settings.ContactSettings.email|richtext }}</p>
+                            {% endif %}
                         </div>
                     </div>
 

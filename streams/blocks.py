@@ -203,10 +203,6 @@ class TestimonialsBlock(blocks.StructBlock):
 # port_heading text
 # port_head_wrapper text
 
+### create forms app for the contact form ###
 
-## footer
-# footer_heading location p
-# footer_heading contact p
-# footer_heading contact url
-# footer_heading email p
-# footer_heading email url
+

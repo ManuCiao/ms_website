@@ -168,37 +168,46 @@
                 <p>Follow Me</p>
             </div>
             <ul class="social_list">
+                {% if settings.site_settings.SocialMediaSettings.github %}
                 <li>
-                    <a href="javascript:;" class="siderbar_icon">
+                    <a href="{{ settings.site_settings.SocialMediaSettings.github }}" class="siderbar_icon">
                         <span class="first_icon"><i class="fab fa-github nav_fb"></i></span>
-                        <span class="second_icon"><i class="fab fa-facebook-f nav_fb"></i></span>
+                        <span class="second_icon"><i class="fab fa-github nav_fb"></i></span>
                     </a>
                 </li>
+                {% endif %}
+                {% if settings.site_settings.SocialMediaSettings.linkedin %}
                 <li>
-                    <a href="javascript:;" class="siderbar_icon">
+                    <a href="{{ settings.site_settings.SocialMediaSettings.linkedin }}" class="siderbar_icon">
                         <span class="first_icon"><i class="fab fa-linkedin-in nav_in"></i></span>
                         <span class="second_icon"><i class="fab fa-linkedin-in nav_in"></i></span>
                     </a>
                 </li>
+                {% endif %}
+                {% if settings.site_settings.SocialMediaSettings.medium %}
                 <li>
-                    <a href="javascript:;" class="siderbar_icon">
+                    <a href="{{ settings.site_settings.SocialMediaSettings.medium }}" class="siderbar_icon">
                         <span class="first_icon"><i class="fab fa-medium nav_whats"></i></span>
                         <span class="second_icon"><i class="fab fa-medium nav_whats"></i></span>
                     </a>
                 </li>
+                {% endif %}
+                {% if settings.site_settings.SocialMediaSettings.linkedin %}
                 <li>
-                    <a href="javascript:;" class="siderbar_icon">
+                    <a href="{{ settings.site_settings.SocialMediaSettings.twitter }}" class="siderbar_icon">
                         <span class="first_icon"><i class="fab fa-twitter nav_twit"></i></span>
                         <span class="second_icon"><i class="fab fa-twitter nav_twit"></i></span>
                     </a>
                 </li>
+                {% endif %}
+                {% if settings.site_settings.SocialMediaSettings.figma %}
                 <li>
-                    <a href="javascript:;" class="siderbar_icon">
+                    <a href="{{ settings.site_settings.SocialMediaSettings.figma }}" class="siderbar_icon">
                         <span class="first_icon"><i class="fab fa-figma nav_insta"></i></span>
                         <span class="second_icon"><i class="fab fa-figma nav_insta"></i></span>
                     </a>
                 </li>
-
+                {% endif %}
             </ul>
         </div>
     </div>
