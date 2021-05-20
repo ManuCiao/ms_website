@@ -9,19 +9,19 @@ Assigned to: ThemeForest
 02. Reusable Css 
 03. Sidebar Css / .port_sidebar_wrapper 
 04. Banner Css / .port_bannerbg_wrapper
-05. About section Css / .port_about_setions
-06. Education section Css / .port_education_setions 
-07. Progress setions Css / .port_progress_setions 
-08. Experience setions Css / .port_experience_setions 
-09. Services setions Css / .port_services_setions 
-10. Projects_Setions Css / .port_projects_setions 
-11. Testimonial setions Css / .port_testimonial_setions  
-12. Blog setions Css / .port_blog_setions 
-13. sponsor setions Css / .port_responsor_setions  
-14. map setions Css / .port_map_setions  
-15. Contact setions Css / .port_contact_wrapper  
-16. footer setions Css / .port_footer_setions 
-17. Single blog setions  Css / .port_singleblog_wrapper 
+05. About section Css / .port_about_sections
+06. Education section Css / .port_education_sections 
+07. Progress sections Css / .port_progress_sections 
+08. Experience sections Css / .port_experience_sections 
+09. Services sections Css / .port_services_sections 
+10. Projects_sections Css / .port_projects_sections 
+11. Testimonial sections Css / .port_testimonial_sections  
+12. Blog sections Css / .port_blog_sections 
+13. sponsor sections Css / .port_responsor_sections  
+14. map sections Css / .port_map_sections  
+15. Contact sections Css / .port_contact_wrapper  
+16. footer sections Css / .port_footer_sections 
+17. Single blog sections  Css / .port_singleblog_wrapper 
 18. Go to top  Css / .bottom_top  
 19. custom scrollbar Css
 20. Media Query Css 
@@ -1101,7 +1101,7 @@ p.banner_pera:after {
 .port_sec_warapper {
     margin-left: 120px;
 }
-.port_about_setions {
+.port_about_sections {
     background: #f7f7f78f;
     padding-bottom: 83px;
 }
@@ -1231,13 +1231,13 @@ p.banner_pera:after {
     opacity: 1;
     visibility: visible;
 }
-.personal_details ul.info-list {
+.personal_details table.info-list {
     list-style-type: none;
     margin: 0;
     padding: 0;
     padding-top: 10px;
 }
-.personal_details ul.info-list li {
+.personal_details table.info-list tr {
     margin-bottom: 8px;
 }
 .personal_details h1.ps_name {
@@ -1570,27 +1570,27 @@ h3.education_place {
 /*================== 06 End education section css ==================  */
 
 /*================== 07 Start progress baar section css ==================  */
-.port_progress_setions {
+.port_progress_sections {
     background: rgb(252, 194, 85);
     padding-bottom: 71px;
 }
-.port_progress_setions .prt_heading_white .prt_heading_wrapper .prt_head:after {
+.port_progress_sections .prt_heading_white .prt_heading_wrapper .prt_head:after {
     background: #fcc255;
 }
 
 /* Progress bar css */
 
-.port_progress_setions .circle {
+.port_progress_sections .circle {
   width: 200px!important;
   display: inline-block;
   position: relative;
   text-align: center;
 }
-.port_progress_setions .circle canvas {
+.port_progress_sections .circle canvas {
     width: 200px!important;
     height: 200px!important;
 }
-.port_progress_setions .circle strong {
+.port_progress_sections .circle strong {
     position: absolute;
     left: 50%;
     top: 50%;
@@ -1605,13 +1605,13 @@ h3.education_place {
     font-weight: 500;
 }
 
-.port_progress_setions .circle strong i {
+.port_progress_sections .circle strong i {
   font-style: normal;
   font-size: 0.6em;
   font-weight: normal;
 }
 
-.port_progress_setions .progressbar span {
+.port_progress_sections .progressbar span {
     display: block;
     color: #fff;
     margin-top: 20px;
@@ -1624,10 +1624,10 @@ h3.education_place {
 /*================== 07 End progress baar section css ==================  */
 
 /*================== 08 start Experience section css ==================  */
-.port_experience_setions{
+.port_experience_sections{
     padding-bottom: 50px;
 }
-.port_experience_setions .exprince_box {
+.port_experience_sections .exprince_box {
     margin-bottom: 29px;
     -webkit-transition: all 05s;
     -moz-transition: all 0.5s;
@@ -1635,7 +1635,7 @@ h3.education_place {
     -o-transition: all 0.5s;
     transition: all 0.5s;
 }
-.port_experience_setions .ex_leftside {
+.port_experience_sections .ex_leftside {
     background: #ff517e;
     border-radius: 3px;
     padding: 23px 20px;
@@ -1647,7 +1647,7 @@ h3.education_place {
 }
 
 
-.port_experience_setions .ex_rightside {
+.port_experience_sections .ex_rightside {
     background: #ffffff;
     padding: 20px;
     border-radius: 3px;
@@ -1686,7 +1686,7 @@ h3.education_place {
     border-top: 11px solid #ffffff00;
     border-bottom: 11px solid #ffffff00;
 }
-.port_experience_setions .ex_rightside h4 {
+.port_experience_sections .ex_rightside h4 {
     font-size: 20px;
     color: #222222;
     font-family: 'Poppins', sans-serif;
@@ -1697,7 +1697,7 @@ h3.education_place {
     font-size: 15px;
     color: #fff;
 }
-.port_experience_setions .padding-0 {
+.port_experience_sections .padding-0 {
     padding-right: 0;
 }
 .ex_rightside .ex_details {
@@ -1722,7 +1722,7 @@ h3.education_place {
     margin-top: 5px;
 }
 
-.port_experience_setions .exprince_box:hover {
+.port_experience_sections .exprince_box:hover {
     -webkit-transform: translate(0px,-2px);
     -o-transform: translate(0px,-2px);
     -ms-transform: translate(0px,-2px);
@@ -1775,12 +1775,12 @@ h3.education_place {
   display: none;
 }
 /*================== 09 Start Services section css ==================  */
-.port_services_setions {
+.port_services_sections {
     background: #f7fbff;
 	padding-bottom: 50px;
 }
 
-.port_services_setions .port_services_box {
+.port_services_sections .port_services_box {
 	transition: all 0.5s;
     background-color: rgb(255, 255, 255);
     border: 1px solid rgb(235, 235, 235);
@@ -1791,11 +1791,11 @@ h3.education_place {
     z-index: 0;
     margin-bottom: 30px;
 }
-.port_services_setions .port_services_box:hover {
+.port_services_sections .port_services_box:hover {
     box-shadow: 0px 12px 29px 0px rgb(0, 0, 0, 0.09);
 	border-color: #00000000;
 }
-.port_services_setions .port_services_box h2 {
+.port_services_sections .port_services_box h2 {
 	font-size: 22px;
     color: #556d91;
     padding: 28px 0px 9px 0px;
@@ -1819,7 +1819,7 @@ h2.project_heading:after {
     margin: auto;
     bottom: 0;
 }
-.port_services_setions .port_services_box P {
+.port_services_sections .port_services_box P {
     color: #777777;
     -webkit-transition: all .3s ease;
     -moz-transition: all .3s ease;
@@ -1951,13 +1951,13 @@ h2.project_heading:after {
 .testimonial_section .prt_heading_white .prt_heading_wrapper .prt_head:after {
     background: #fcc255;
 }
-.port_testimonial_setions {
+.port_testimonial_sections {
 	background: #f7faff;
     background-repeat: no-repeat;
 	position:relative;
 	z-index: 0;
 }
-.port_testimonial_setions:before {
+.port_testimonial_sections:before {
     content: "";
     position: absolute;
     bottom: 0;
@@ -1967,7 +1967,7 @@ h2.project_heading:after {
     height: 344px;
 	z-index: -1;
 }
-.port_testimonial_setions:after {
+.port_testimonial_sections:after {
     content: "";
     position: absolute;
     top: 0;
@@ -1977,14 +1977,14 @@ h2.project_heading:after {
     height: 390px;
 	z-index: -1;
 }
-.port_testimonial_setions .prt_heading_boxwrapper .prt_placeholder {
+.port_testimonial_sections .prt_heading_boxwrapper .prt_placeholder {
     color: rgba(255, 255, 255, 0.21);
 }
-.port_testimonial_setions .swiper-container {
+.port_testimonial_sections .swiper-container {
     width: 100%;
     height: 100%;
     }
-.port_testimonial_setions .swiper-slide {
+.port_testimonial_sections .swiper-slide {
     display: -webkit-box;
     display: -ms-flexbox;
     display: -webkit-flex;
@@ -1998,16 +1998,16 @@ h2.project_heading:after {
     -webkit-align-items: center;
     align-items: center;
 }
-.port_testimonial_setions .testimonial_top_box .testimonial_img {
+.port_testimonial_sections .testimonial_top_box .testimonial_img {
     border: 5px solid rgb(0, 200, 218);
     height: 484px;
 	overflow: hidden;
 }
-.port_testimonial_setions .port_test_data {
+.port_testimonial_sections .port_test_data {
     max-width: 864px;
     margin: auto;
 }
-.port_testimonial_setions .testimonial_icon svg {
+.port_testimonial_sections .testimonial_icon svg {
     width: 20px;
 	transition: all 0.3s;
     -webkit-transition: all 0.3s;
@@ -2015,14 +2015,14 @@ h2.project_heading:after {
     -ms-transition: all 0.3s;
     -o-transition: all 0.3s;
 }
-.port_testimonial_setions .testimonial_icon svg path{
+.port_testimonial_sections .testimonial_icon svg path{
 	transition: all 0.3s;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     -ms-transition: all 0.3s;
     -o-transition: all 0.3s;
 }
-.port_testimonial_setions .testimonial_icon {
+.port_testimonial_sections .testimonial_icon {
     width: 65px;
     height: 65px;
     background: #ffffff;
@@ -2043,32 +2043,32 @@ h2.project_heading:after {
     -ms-transition: all 0.3s;
     -o-transition: all 0.3s;
 }
-.port_testimonial_setions .testimonial_icon .video {
+.port_testimonial_sections .testimonial_icon .video {
     display: block;
 }
-.port_testimonial_setions .testimonial_icon:hover path{
+.port_testimonial_sections .testimonial_icon:hover path{
 	fill:#00c8da;
 	
 }
-.port_testimonial_setions .testimonial_icon:hover.testimonial_icon {
+.port_testimonial_sections .testimonial_icon:hover.testimonial_icon {
     background: #ebebeb;
     border-color: #00c7db;
 }
-.port_testimonial_setions .testimonial_details_box h3 {
+.port_testimonial_sections .testimonial_details_box h3 {
     font-size: 18px;
     font-weight: 700;
     color: #556d91;
     padding: 12px 0px 5px 0;
 }
-.port_testimonial_setions .testimonial_details_box h4 {
+.port_testimonial_sections .testimonial_details_box h4 {
     color: #757575;
     font-size: 15px;
     font-weight: 400;
 }
-.port_testimonial_setions .testimonial_top_box {
+.port_testimonial_sections .testimonial_top_box {
     position: relative;
 }
-.port_testimonial_setions .testimonial_details_box {
+.port_testimonial_sections .testimonial_details_box {
     width: 770px;
     height: 200px;
     background: #fff;
@@ -2082,7 +2082,7 @@ h2.project_heading:after {
 	z-index:1;
 
 }
-.port_testimonial_setions .port_testi_quote svg {
+.port_testimonial_sections .port_testi_quote svg {
     position: absolute;
     top: 0;
     bottom: 0;
@@ -2094,7 +2094,7 @@ h2.project_heading:after {
     z-index: -1;
 }
 /* start pulse effects */
-.port_testimonial_setions .testimonial_icon .btn-wave {
+.port_testimonial_sections .testimonial_icon .btn-wave {
     position: absolute;
     top: 0;
     left: 0;
@@ -2106,7 +2106,7 @@ h2.project_heading:after {
     z-index: -1;
     /* cursor:pointer; */
 }
-.port_testimonial_setions .testimonial_icon .btn-wave {
+.port_testimonial_sections .testimonial_icon .btn-wave {
   -webkit-animation: sonarWave 2s linear infinite;
   animation: sonarWave 2s linear infinite;
 }
@@ -2143,10 +2143,10 @@ h2.project_heading:after {
 
 /*================== 12 Start blog main section css ==================  */
 
-.port_blog_setions .port_blog_imgbox {
+.port_blog_sections .port_blog_imgbox {
     overflow: hidden;
 }
-.port_blog_setions .port_blog_imgbox img {
+.port_blog_sections .port_blog_imgbox img {
 	position:relative;
     transform: scale(1);
     -webkit-transform: scale(1);
@@ -2159,14 +2159,14 @@ h2.project_heading:after {
     -ms-transition: all 700ms ease;
     -o-transition: all 700ms ease;
 }
-.port_blog_setions .port_blog_mainbox:hover .port_blog_imgbox img{
+.port_blog_sections .port_blog_mainbox:hover .port_blog_imgbox img{
 	transform: scale(1.05);
 	-o-transform: scale(1.05);
 	-ms-transform: scale(1.05);
 	-moz-transform: scale(1.05);
     -webkit-transform: scale(1.05);
 }
-.port_blog_setions .port_blog_contentbox span.date_span {
+.port_blog_sections .port_blog_contentbox span.date_span {
 	color: #556d91;
     text-transform: uppercase;
     font-weight: 500;
@@ -2174,7 +2174,7 @@ h2.project_heading:after {
 	font-weight: 600;
 }
 
-.port_blog_setions h4.blog_heading a {
+.port_blog_sections h4.blog_heading a {
     margin: 15px 0;
     color: #222;
     display: block;
@@ -2185,7 +2185,7 @@ h2.project_heading:after {
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
-.port_blog_setions .port_blog_contentbox span a {
+.port_blog_sections .port_blog_contentbox span a {
     color: #ff754a;
     text-decoration: none;
     text-transform: uppercase;
@@ -2198,7 +2198,7 @@ h2.project_heading:after {
     transition: all .3s ease;
 }
 
-.port_blog_setions .port_blog_contentbox .blog_info ul li {
+.port_blog_sections .port_blog_contentbox .blog_info ul li {
 	list-style-type: none;
     display: inline-block;
     padding-right: 10px;
@@ -2207,27 +2207,27 @@ h2.project_heading:after {
     line-height: 0px;
 	font-weight: 500;
 }
-.port_blog_setions .port_blog_contentbox .blog_info ul li:first-child {
+.port_blog_sections .port_blog_contentbox .blog_info ul li:first-child {
     padding-left: 0;
 }
-.port_blog_setions .port_blog_contentbox .blog_info ul li:last-child {
+.port_blog_sections .port_blog_contentbox .blog_info ul li:last-child {
     border: none;
 }
-.port_blog_setions .port_blog_contentbox .blog_info a {
+.port_blog_sections .port_blog_contentbox .blog_info a {
     margin-left: 10px;
 	color:#ff517e;
 }
-.port_blog_setions .port_blog_contentbox p {
+.port_blog_sections .port_blog_contentbox p {
     margin: 10px 0;
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
-.port_blog_setions .vertical_content .port_blog_contentbox p {
+.port_blog_sections .vertical_content .port_blog_contentbox p {
 	margin-bottom:15px;
 }
-.port_blog_setions .port_blog_contentbox .blog_info ul li i {
+.port_blog_sections .port_blog_contentbox .blog_info ul li i {
     color: #ff517e;
     vertical-align: middle;
 }
@@ -2250,36 +2250,36 @@ h2.project_heading:after {
     vertical-align: middle;
 }
 
-.port_blog_setions .port_blog_contentbox {
+.port_blog_sections .port_blog_contentbox {
     padding: 30px;
 }
-.port_blog_setions .right_content .port_blog_contentbox p {
+.port_blog_sections .right_content .port_blog_contentbox p {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
-.port_blog_setions .left_content .port_blog_contentbox p {
+.port_blog_sections .left_content .port_blog_contentbox p {
     display: -webkit-box;
     -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     overflow: hidden;
 }
-.port_blog_setions .port_blog_mainbox {
+.port_blog_sections .port_blog_mainbox {
     margin-bottom: 30px;
 	box-shadow: 0 0px 30px 0 rgba(0,0,0,0.08);
 }
-.port_blog_setions .right_box .port_blog_imgbox:after {
+.port_blog_sections .right_box .port_blog_imgbox:after {
     left: -20px;
     right: 20px;
 }
 /*================== 12 End blog main section css ==================  */
 
 /*================== 13 Start responser section css ==================  */
-.port_responsor_setions {
+.port_responsor_sections {
     background: #00c8da;
 }
-.port_responsor_setions .port_swipper_responsor {
+.port_responsor_sections .port_swipper_responsor {
     text-align: center;
 }
 .port_swipper_responsor svg {
@@ -2318,11 +2318,11 @@ h2.project_heading:after {
 /*================== 13 End responser section css ==================  */
 
 /*================== 14 Start map section css ==================  */
-.port_map_setions .map_box #world-map {
+.port_map_sections .map_box #world-map {
     width: 100%;
     height: 586px;
 }
-.port_map_setions .jvmap-smart{
+.port_map_sections .jvmap-smart{
     width: 100%; 
     height: 100%;  
 }
@@ -2331,13 +2331,13 @@ h2.project_heading:after {
     content: '';
     clear: both;
 }
-.port_map_setions .jvectormap-zoomin, .port_map_setions .jvectormap-zoomout {
+.port_map_sections .jvectormap-zoomin, .port_map_sections .jvectormap-zoomout {
     display: none;
 }
 /*================== 14 End map section css ==================  */
 
 /*================== 15 Start contact section css ==================  */
-.port_contact_setions .port_contact_mainbox {
+.port_contact_sections .port_contact_mainbox {
     max-width: 770px;
     height: auto;
     background-color: #fff;
@@ -2374,7 +2374,7 @@ h2.project_heading:after {
 
 /*================== 16 footer section css ==================  */
 
-.port_footer_setions .footer_heading {
+.port_footer_sections .footer_heading {
     color: #556d91;
     font-size: 22px;
     position: relative;
@@ -2382,7 +2382,7 @@ h2.project_heading:after {
     margin-bottom: 10px;
     font-weight: 700;
 }
-.port_footer_setions .footer_heading:after {
+.port_footer_sections .footer_heading:after {
     content: "";
     position: absolute;
     left: 0;
@@ -2400,15 +2400,15 @@ h2.project_heading:after {
 .contact_info p a {
     color: #777777;
 }
-.port_footer_setions .copy_right_wrapper {
+.port_footer_sections .copy_right_wrapper {
     background: #ffc454;
     padding:17px 0 12px 0;
 	margin-top: 72px;
 }
-.port_footer_setions .copy_right_wrapper p.copy_right a {
+.port_footer_sections .copy_right_wrapper p.copy_right a {
     color: #fff;
 }
-.port_footer_setions .footer_contact_info p{
+.port_footer_sections .footer_contact_info p{
 	word-break:break-all;
 	
 }
@@ -2855,16 +2855,16 @@ h2.project_heading:after {
     margin: 75px auto 0 auto;
     max-width: 500px;
 }
-.personal_details ul.info-list li {
+.personal_details table.info-list li {
     margin-bottom: 17px;
 }
 .education_mright .education_rinfo {
     padding: 20px 20px 20px 20px;
 }
-.port_testimonial_setions .port_test_data {
+.port_testimonial_sections .port_test_data {
     width: 842px;
 }
-.port_testimonial_setions .testimonial_top_box .testimonial_img {
+.port_testimonial_sections .testimonial_top_box .testimonial_img {
     height: auto;
 }
 .banner_rcontent svg.move_bg{
@@ -2900,7 +2900,7 @@ h2.project_heading:after {
 	top: 20px;
 }
 
-.port_about_setions {
+.port_about_sections {
     padding-bottom: 72px;
 }
 .education_main_wrapper:after{
@@ -2908,26 +2908,26 @@ h2.project_heading:after {
 }
 
 
-.port_progress_setions {
+.port_progress_sections {
     padding-bottom: 21px;
 }
 .port_project_gallery .grid-item {
     width: 50%;
 }
 
-.port_testimonial_setions .port_test_data {
+.port_testimonial_sections .port_test_data {
     width: 616px;
 }
-.port_testimonial_setions .testimonial_details_box {
+.port_testimonial_sections .testimonial_details_box {
     width: 550px;
 }
-.port_blog_setions .port_blog_contentbox {
+.port_blog_sections .port_blog_contentbox {
     padding: 25px;
 }
-.port_blog_setions h4.blog_heading a {
+.port_blog_sections h4.blog_heading a {
     margin: 5px 0;
 }
-.port_blog_setions .port_blog_imgbox img{
+.port_blog_sections .port_blog_imgbox img{
 	display:block;
 	margin:auto;
 }
@@ -3074,19 +3074,19 @@ h2.project_heading:after {
 .education_main_wrapper .education_box {
     margin-bottom: 80px;
 }
-.port_testimonial_setions .port_test_data {
+.port_testimonial_sections .port_test_data {
     width: 100%;
 }
 
-.port_testimonial_setions .testimonial_details_box {
+.port_testimonial_sections .testimonial_details_box {
     width: auto;
 	margin-top: 50px;
 	height: auto;
 }
-.port_contact_setions .port_contact_mainbox {
+.port_contact_sections .port_contact_mainbox {
     margin-top: 0px;
 }
-.port_map_setions .map-container {
+.port_map_sections .map-container {
     height: 315px;
 }
 .port_banner_wrapper .banner_content {
@@ -3129,10 +3129,10 @@ p.banner_pera {
     text-align:left;
     margin-top: 15px;
 }
-.port_map_setions .map_box #world-map {
+.port_map_sections .map_box #world-map {
     height: 100%;
 }
-.port_testimonial_setions:after, .port_testimonial_setions:before {
+.port_testimonial_sections:after, .port_testimonial_sections:before {
     display:none;
 }
 
@@ -3144,7 +3144,7 @@ p.banner_pera {
     line-height: 47px;
     font-size: 15px;
 }
-.personal_details ul.info-list li {
+.personal_details table.info-list li {
     margin-bottom: 8px;
 }
 .education_mright .left_title_box:before{
@@ -3153,7 +3153,7 @@ p.banner_pera {
 .education_secondbox .left_title_box:before{
 	display:none;
 }
-.port_experience_setions .ex_leftside {
+.port_experience_sections .ex_leftside {
     width: 200px;
 	margin-bottom:15px;
 }
@@ -3208,13 +3208,13 @@ p.banner_pera {
     width: 100%;
 }
 
-.port_testimonial_setions .testimonial_top_box .testimonial_img {
+.port_testimonial_sections .testimonial_top_box .testimonial_img {
     margin: auto;
 }
-.port_footer_setions .footer_contact_info .contact_info {
+.port_footer_sections .footer_contact_info .contact_info {
     margin-bottom: 30px;
 }
-.port_footer_setions .footer_contact_info .col-sm-4:last-child .contact_info {
+.port_footer_sections .footer_contact_info .col-sm-4:last-child .contact_info {
     margin-bottom: 0;
 }
 
@@ -3231,7 +3231,7 @@ p.banner_pera {
 .experience_section .col-md-12:nth-child(6) .ex_leftside:after {
     border-left-color: #ff517e00;
 }
-.port_testimonial_setions .testimonial_details_box {
+.port_testimonial_sections .testimonial_details_box {
     margin-top: 30px;
 }
 
@@ -3241,14 +3241,14 @@ p.banner_pera {
 .personal_details h1.ps_name {
     font-size: 18px;
 }
-.personal_details ul.info-list li {
+.personal_details table.info-list li {
     margin-bottom: 2px;
 }
 
 .personal_details p.ps_designation {
     padding-bottom: 0px;
 }
-.personal_details ul.info-list {
+.personal_details table.info-list {
     padding-bottom: 0px;
 }
 .personal_details a.social-button {
@@ -3267,7 +3267,7 @@ p.banner_pera {
 h3.education_place {
     font-size: 20px;
 }
-.port_map_setions .map-container {
+.port_map_sections .map-container {
     height: 225px;
 }
 .bannner_leftpart .banner_name {
@@ -3290,10 +3290,10 @@ p.banner_pera {
 .blog_content blockquote .blockquote_icon {
     top: 15px;
 }
-.port_testimonial_setions .testimonial_details_box {
+.port_testimonial_sections .testimonial_details_box {
     padding: 20px;
 }
-.port_contact_setions .port_contact_mainbox {
+.port_contact_sections .port_contact_mainbox {
     padding: 49px 20px 45px 20px;
 }
 }

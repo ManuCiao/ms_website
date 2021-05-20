@@ -4,7 +4,35 @@ from wagtail.snippets.blocks import SnippetChooserBlock
 from django import forms
 from wagtail.contrib.table_block.blocks import TableBlock
 
-
+NEW_TABLE_OPTIONS = {
+    'minSpareRows': 0,
+    'startRows': 4,
+    'startCols': 4,
+    'colHeaders': False,
+    'rowHeaders': False,
+    'contextMenu': [
+        'row_above',
+        'row_below',
+        '---------',
+        'col_left',
+        'col_right',
+        '---------',
+        'remove_row',
+        'remove_col',
+        '---------',
+        'undo',
+        'redo',
+        '---------',
+        'copy',
+        'cut'
+        '---------',
+        'alignment',
+    ],
+    'editor': 'text',
+    'stretchH': 'all',
+    'renderer': 'html',
+    'autoColumnSize': False,
+}
 class TitleBlock(blocks.StructBlock):
 
     sub_heading = blocks.CharBlock(required=True, help_text="Enter sub-heading")
@@ -87,7 +115,7 @@ class AnyTableBlock(TableBlock):
 
 class AboutMeBlock(blocks.StructBlock):
     title = TitleBlock(help_text="Enter heading and subheading")
-    table = AnyTableBlock(help_text="Enter your details in this table")
+    table = TableBlock(table_options=NEW_TABLE_OPTIONS, help_text="Enter your details in this table")
 
     class Meta:
         template = "streams/about_me.html"

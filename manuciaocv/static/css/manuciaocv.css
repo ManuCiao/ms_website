@@ -5,6 +5,16 @@ Files inside this folder can contain global styles used in the project.
 */
 /* Additonal Base Stylesheets */
 /* Components */
+.port_about_sections .personal_details table.info-list {
+  color: #fff; }
+  .port_about_sections .personal_details table.info-list tbody tr td:nth-child(1) {
+    color: #fcc255 !important; }
+
+.port_about_sections .personal_details .table td,
+.port_about_sections .personal_details .table th {
+  padding: .65rem 0 !important;
+  border-top: none !important; }
+
 /* Pages */
 .template-homepage .body img {
   max-width: 100%;

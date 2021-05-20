@@ -1,7 +1,7 @@
 {% load static wagtailimages_tags wagtailcore_tags %}
 {% load table_block_tags %}
 
-<div class="port_about_setions prt_toppadder80 page_scroll" data-scroll="0" id="about_sec">
+<div class="port_about_sections prt_toppadder80 page_scroll" data-scroll="0" id="about_sec">
     <!-- start about section  -->
 
 
@@ -24,13 +24,12 @@
                             <div class="personal_details">
                                 <h1 class="ps_name">John Weary</h1>
                                 <p class="ps_designation">UI & UX Designer</p>
-                                <ul class="info-list">
+                                <!-- <ul class="info-list">
                                     <li><span class="title">Age</span><span class="value">28</span></li>
 
                                     <li><span class="title">Address</span><span class="value">71 Pilgrim Avenue
                                             Chevy Chase, MD 20815 </span></li>
-                                    <li><span class="title">E-mail</span><span class="value"><a
-                                                href="mailto:email@example.com">email@example.com</a></span></li>
+                                    <li><span class="title">E-mail</span><span class="value"><a href="mailto:email@example.com">email@example.com</a></span></li>
                                     <li><span class="title">Residence</span><span class="value">USA</span></li>
                                     <li><span class="title">Phone</span><span class="value">+0123 789 123 456
                                         </span></li>
@@ -38,8 +37,67 @@
                                     </li>
                                     <li><span class="title">Freelance</span><span
                                             class="value available">Available</span></li>
-                                </ul>
-
+                                </ul> -->
+                                <table 
+                                    class="info-list table table-responsive">
+                                    <!-- {% if value.table.table_caption %}
+                                       <caption>{{ value.table.table_caption }}</caption>
+                                    {% endif %} --> 
+                                    <!-- &lt;a href="mailto:a@a.com"&gt;a@a.com&lt;/a&gt; -->
+                                    {% if value.table.table_header %}
+                                    <thead>
+                                        <tr>
+                                            {% for column in value.table.table_header %}
+                                            {% with forloop.counter0 as col_index %}
+                                            <th scope="col" {% cell_classname 0 col_index %}>
+                                                {% if column.strip %}
+                                                {% if html_renderer %}
+                                                {{ column.strip|safe|linebreaksbr }}
+                                                {% else %}
+                                                {{ column.strip|linebreaksbr }}
+                                                {% endif %}
+                                                {% endif %}
+                                            </th>
+                                            {% endwith %}
+                                            {% endfor %}
+                                        </tr>
+                                    </thead>
+                                    {% endif %}
+                                    <tbody>
+                                        {% for row in value.table.data %}
+                                        {% with forloop.counter0 as row_index %}
+                                        <tr>
+                                            {% for column in row %}
+                                            {% with forloop.counter0 as col_index %}
+                                            {% if first_col_is_header and forloop.first %}
+                                            <th scope="row"
+                                                {% cell_classname row_index col_index value.table.table_header %}>
+                                                {% if column.strip %}
+                                                {% if html_renderer %}
+                                                {{ column.strip|safe|linebreaksbr }}
+                                                {% else %}
+                                                {{ column.strip|linebreaksbr }}
+                                                {% endif %}
+                                                {% endif %}
+                                            </th>
+                                            {% else %}
+                                            <td {% cell_classname row_index col_index value.table.table_header %}>
+                                                {% if column.strip %}
+                                                {% if html_renderer %}
+                                                {{ column.strip|safe|linebreaksbr }}
+                                                {% else %}
+                                                {{ column.strip|linebreaksbr }}
+                                                {% endif %}
+                                                {% endif %}
+                                            </td>
+                                            {% endif %}
+                                            {% endwith %}
+                                            {% endfor %}
+                                        </tr>
+                                        {% endwith %}
+                                        {% endfor %}
+                                    </tbody>
+                                </table>
                                 <ul class="social-links">
 
                                     {% if settings.site_settings.SocialMediaSettings.github %}
@@ -81,10 +139,10 @@
                     <div class="right_section">
                         <div class="port_heading_wrapper">
                             <div class="port_sub_heading_wrapper">
-                                <h2 class="port_sub_heading">About Me </h2>
+                                <h2 class="port_sub_heading">{{ value.title.sub_heading }}</h2>
                             </div>
                         </div>
-                        <h2 class="about_tophead">I'm In The Design Industry With 10 Years Of Experience.</h2>
+                        <h2 class="about_tophead">{{ value.title.heading }}</h2>
                         <p class="about_deatils">There are many variations of passages of Lorem Ipsum , but the a
                             have suffered are some form, by injected humour, or the words which don't look even
                             slightl. If you use a passage of, you need to be sure there isn't anything look even

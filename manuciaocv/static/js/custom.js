@@ -207,8 +207,8 @@ Assigned to: ThemeForest
 	/*------------------------------------------------------------------*/
 	// Start testimonial swipper slider
 	testimonial_slider: function() {
-		if($('.port_testimonial_setions .swiper-container').length > 0){
-			var swiper = new Swiper('.port_testimonial_setions .swiper-container', {
+		if($('.port_testimonial_sections .swiper-container').length > 0){
+			var swiper = new Swiper('.port_testimonial_sections .swiper-container', {
 			  slidesPerView: 1,
 			  spaceBetween: 30,
 			  loop: true,
@@ -229,8 +229,8 @@ Assigned to: ThemeForest
 	
 	// Re sponsor swipper slider
 	responsor_slider: function() {
-		if($('.port_responsor_setions .swiper-container').length > 0){
-			var swiper = new Swiper('.port_responsor_setions .swiper-container', {
+		if($('.port_responsor_sections .swiper-container').length > 0){
+			var swiper = new Swiper('.port_responsor_sections .swiper-container', {
 			  slidesPerView: 5,
 			  spaceBetween: 30,
 			  loop: true,

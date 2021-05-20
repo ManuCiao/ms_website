@@ -1,0 +1,21 @@
+.port_about_sections {
+
+    .personal_details {
+
+        table.info-list {
+            color: #fff;
+
+            tbody {
+                tr td:nth-child(1) {
+                    color: #fcc255 !important;
+                }
+            }
+        }
+
+        .table td,
+        .table th {
+            padding: .65rem 0 !important;
+            border-top: none !important;
+        }
+    }
+}
