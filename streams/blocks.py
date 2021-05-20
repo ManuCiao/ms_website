@@ -82,8 +82,12 @@ class ImageAndTestBlock(blocks.StructBlock):
 
 
 class AboutMeBlock(blocks.StructBlock):
-    pass
+    title = TitleBlock(help_text="Enter heading and subheading")
 
+    class Meta:
+        template = "streams/about_me.html"
+        icon = "doc-full-inverse"
+        label = "About me"
 
 ## about me block
 # image 445x490
@@ -114,7 +118,12 @@ class AboutMeBlock(blocks.StructBlock):
 
 
 class EducationBlock(blocks.StructBlock):
-    pass
+    title = TitleBlock(help_text="Enter heading and subheading")
+
+    class Meta:
+        template = "streams/education.html"
+        icon = "grip"
+        label = "Education"
 
 
 ## education block
@@ -129,7 +138,12 @@ class EducationBlock(blocks.StructBlock):
 
 
 class ProgressBarBlock(blocks.StructBlock):
-    pass
+    title = TitleBlock(help_text="Enter heading and subheading")
+
+    class Meta:
+        template = "streams/progress_bars.html"
+        icon = "spinner"
+        label = "Progress Bars"
 
 
 ## progress bar block
@@ -139,7 +153,12 @@ class ProgressBarBlock(blocks.StructBlock):
 
 
 class ExperienceBlock(blocks.StructBlock):
-    pass
+    title = TitleBlock(help_text="Enter heading and subheading")
+
+    class Meta:
+        template = "streams/experience.html"
+        icon = "list-ul"
+        label = "Experience"
 
 
 ## experience block
@@ -157,8 +176,13 @@ class ExperienceBlock(blocks.StructBlock):
 # more_content p text
 
 
-class MyServicesBlock(blocks.StructBlock):
-    pass
+class ServicesBlock(blocks.StructBlock):
+    title = TitleBlock(help_text="Enter heading and subheading")
+
+    class Meta:
+        template = "streams/services.html"
+        icon = "cog"
+        label = "Services"
 
 
 ## my services block
@@ -172,7 +196,12 @@ class MyServicesBlock(blocks.StructBlock):
 
 
 class MyProjectsBlock(blocks.StructBlock):
-    pass
+    title = TitleBlock(help_text="Enter heading and subheading")
+
+    class Meta:
+        template = "streams/my_projects.html"
+        icon = "image"
+        label = "My Projects"
 
 
 ## my projects block
