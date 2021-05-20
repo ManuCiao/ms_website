@@ -2,6 +2,7 @@ from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.snippets.blocks import SnippetChooserBlock
 from django import forms
+from wagtail.contrib.table_block.blocks import TableBlock
 
 
 class TitleBlock(blocks.StructBlock):
@@ -81,8 +82,12 @@ class ImageAndTestBlock(blocks.StructBlock):
         label = "Image & Text"
 
 
+class AnyTableBlock(TableBlock):
+    pass
+
 class AboutMeBlock(blocks.StructBlock):
     title = TitleBlock(help_text="Enter heading and subheading")
+    table = AnyTableBlock(help_text="Enter your details in this table")
 
     class Meta:
         template = "streams/about_me.html"

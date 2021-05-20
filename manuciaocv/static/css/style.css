@@ -1156,7 +1156,7 @@ p.banner_pera:after {
     position: relative;
 	z-index: 1;
 }
-.about_leftsection .img_warapper img {
+.about_leftsection .img_wrapper img {
     width: 100%;
 }
 .about_leftsection .icon {
@@ -1210,7 +1210,7 @@ p.banner_pera:after {
     border: 4px solid #ff517e;
     z-index: -1;
 }
-.selfintro_section .left_deatils {
+.selfintro_section .left_details {
     position: absolute;
     top: 0;
     left: 0;
@@ -1227,7 +1227,7 @@ p.banner_pera:after {
     -o-transition: all 0.5s;
     transition: all 0.5s;
 }
-.about_leftsection.open_details .left_deatils {
+.about_leftsection.open_details .left_details {
     opacity: 1;
     visibility: visible;
 }
@@ -3313,7 +3313,7 @@ p.banner_pera {
 .personal_details ul.social-links {
    display:none;
 }
-.selfintro_section .left_deatils {
+.selfintro_section .left_details {
    
     padding: 15px 15px;
 }
