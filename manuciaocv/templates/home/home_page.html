@@ -126,16 +126,35 @@
                                     </ul>
 
                                     <ul class="social-links">
-                                        <li><a class="tip social-button" href="javascript:;"><i
+
+                                        {% if settings.site_settings.SocialMediaSettings.github %}
+                                        <li><a class="tip social-button"
+                                                href="{{ settings.site_settings.SocialMediaSettings.github }}"><i
                                                     class="fab fa-github"></i></a></li>
-                                        <li><a class="tip social-button" href="javascript:;"><i
+                                        {% endif %}
+                                        {% if settings.site_settings.SocialMediaSettings.linkedin %}
+                                        <li><a class="tip social-button"
+                                                href="{{ settings.site_settings.SocialMediaSettings.linkedin }}"><i
                                                     class="fab fa-linkedin-in"></i></a></li>
-                                        <li><a class="tip social-button" href="javascript:;"><i
-                                                    class="fab fa-medium"></i></a></li>
-                                        <li><a class="tip social-button" href="javascript:;"><i
+                                        {% endif %}
+                                        {% if settings.site_settings.SocialMediaSettings.medium %}
+                                        <li><a class="tip social-button"
+                                                href="{{ settings.site_settings.SocialMediaSettings.medium }}">
+                                                <img class="medium" width="25" height="25"
+                                                    src="{% static 'images/medium_white.svg' %}">
+                                            </a></li>
+                                        {% endif %}
+                                        {% if settings.site_settings.SocialMediaSettings.twitter %}
+                                        <li><a class="tip social-button"
+                                                href="{{ settings.site_settings.SocialMediaSettings.twitter }}"><i
                                                     class="fab fa-twitter"></i></a></li>
-                                        <li><a class="tip social-button" href="javascript:;"><i
+                                        {% endif %}
+                                        {% if settings.site_settings.SocialMediaSettings.figma %}
+                                        <li><a class="tip social-button"
+                                                href="{{ settings.site_settings.SocialMediaSettings.figma }}"><i
                                                     class="fab fa-figma"></i></a></li>
+                                        {% endif %}
+
                                     </ul>
 
                                 </div>
@@ -181,7 +200,7 @@
             </div>
         </div>
     </div> <!-- End about section  -->
-    
+
     <div class="port_education_setions prt_toppadder80 prt_bottompadder80 ">
         <!-- start Education section  -->
         <div class="education_section">
@@ -1494,7 +1513,7 @@
 {% endblock banner %}
 
 {% block content %}
-    {% for block in page.body %}
-        {% include_block block %}
-    {% endfor %}
+{% for block in page.body %}
+{% include_block block %}
+{% endfor %}
 {% endblock content %}
