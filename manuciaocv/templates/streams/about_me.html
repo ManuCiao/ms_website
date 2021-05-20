@@ -1,0 +1,114 @@
+{% load static wagtailimages_tags wagtailcore_tags %}
+
+<div class="port_about_setions prt_toppadder80 page_scroll" data-scroll="0" id="about_sec">
+    <!-- start about section  -->
+    <div class="selfintro_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-5 col-lg-12 col-md-12">
+                    <div class="about_leftsection ">
+                        <div class="img_warapper">
+                            <img class="img-fluid" src="http://via.placeholder.com/445x490" alt="About"
+                                title="more information click + icon">
+                            <div class="icon" title="more information click + icon">
+                                <div class="iconbox">
+                                    <i class="fa fa-plus icon_plus" aria-hidden="true"></i>
+                                    <i class="fa fa-minus icon_minus" aria-hidden="true"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="left_deatils">
+                            <div class="personal_details">
+                                <h1 class="ps_name">John Weary</h1>
+                                <p class="ps_designation">UI & UX Designer</p>
+                                <ul class="info-list">
+                                    <li><span class="title">Age</span><span class="value">28</span></li>
+
+                                    <li><span class="title">Address</span><span class="value">71 Pilgrim Avenue
+                                            Chevy Chase, MD 20815 </span></li>
+                                    <li><span class="title">E-mail</span><span class="value"><a
+                                                href="mailto:email@example.com">email@example.com</a></span></li>
+                                    <li><span class="title">Residence</span><span class="value">USA</span></li>
+                                    <li><span class="title">Phone</span><span class="value">+0123 789 123 456
+                                        </span></li>
+                                    <li><span class="title">Skype</span><span class="value">Caseyj.mullins</span>
+                                    </li>
+                                    <li><span class="title">Freelance</span><span
+                                            class="value available">Available</span></li>
+                                </ul>
+
+                                <ul class="social-links">
+
+                                    {% if settings.site_settings.SocialMediaSettings.github %}
+                                    <li><a class="tip social-button"
+                                            href="{{ settings.site_settings.SocialMediaSettings.github }}"><i
+                                                class="fab fa-github"></i></a></li>
+                                    {% endif %}
+                                    {% if settings.site_settings.SocialMediaSettings.linkedin %}
+                                    <li><a class="tip social-button"
+                                            href="{{ settings.site_settings.SocialMediaSettings.linkedin }}"><i
+                                                class="fab fa-linkedin-in"></i></a></li>
+                                    {% endif %}
+                                    {% if settings.site_settings.SocialMediaSettings.medium %}
+                                    <li><a class="tip social-button"
+                                            href="{{ settings.site_settings.SocialMediaSettings.medium }}">
+                                            <img class="medium" width="25" height="25"
+                                                src="{% static 'images/medium_white.svg' %}">
+                                        </a></li>
+                                    {% endif %}
+                                    {% if settings.site_settings.SocialMediaSettings.twitter %}
+                                    <li><a class="tip social-button"
+                                            href="{{ settings.site_settings.SocialMediaSettings.twitter }}"><i
+                                                class="fab fa-twitter"></i></a></li>
+                                    {% endif %}
+                                    {% if settings.site_settings.SocialMediaSettings.figma %}
+                                    <li><a class="tip social-button"
+                                            href="{{ settings.site_settings.SocialMediaSettings.figma }}"><i
+                                                class="fab fa-figma"></i></a></li>
+                                    {% endif %}
+
+                                </ul>
+
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-xl-7 col-lg-12 col-md-12">
+                    <div class="right_section">
+                        <div class="port_heading_wrapper">
+                            <div class="port_sub_heading_wrapper">
+                                <h2 class="port_sub_heading">About Me </h2>
+                            </div>
+                        </div>
+                        <h2 class="about_tophead">I'm In The Design Industry With 10 Years Of Experience.</h2>
+                        <p class="about_deatils">There are many variations of passages of Lorem Ipsum , but the a
+                            have suffered are some form, by injected humour, or the words which don't look even
+                            slightl. If you use a passage of, you need to be sure there isn't anything look even
+                            slightly believable. If you are going to use a of , you need to be sure there isn't
+                            hidden in the middle the on the tend.</p>
+                        <p>Embarrassing hidden in the middle of text. All the Lorem Ipsum generate on the are
+                            Internet tend to repeat predefined chunks as necessary, making of this the first true
+                            generator on the Internet which don't look even you.</p>
+                        <div class="signature_box">
+                            <div class="name">
+                                <h2>John Weary</h2>
+                                <p>Product Manager</p>
+                            </div>
+                        </div>
+                        <div class="anout_section_btn">
+                            <a href="javascript:;" class="portfolio_btn btn_yellow">
+                                <span class="first_text">Download CV</span>
+                                <span class="second_text">Download</span>
+                            </a>
+                            <a href="javascript:;" class="portfolio_btn btn_red" id="redirect_contact">
+                                <span class="first_text">Hire Me</span>
+                                <span class="second_text">Contact</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> <!-- End about section  -->
