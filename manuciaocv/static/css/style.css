@@ -1231,13 +1231,13 @@ p.banner_pera:after {
     opacity: 1;
     visibility: visible;
 }
-.personal_details table.info-list {
+.personal_details ul.info-list {
     list-style-type: none;
     margin: 0;
     padding: 0;
     padding-top: 10px;
 }
-.personal_details table.info-list tr {
+.personal_details ul.info-list li {
     margin-bottom: 8px;
 }
 .personal_details h1.ps_name {

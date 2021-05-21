@@ -52,6 +52,8 @@ INSTALLED_APPS = [
 
     'modelcluster',
     'taggit',
+    'wagtailmarkdown',
+    'wagtailfontawesome',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -60,6 +62,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
 
 MIDDLEWARE = [
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -170,6 +173,7 @@ MEDIA_URL = '/media/'
 
 WAGTAIL_SITE_NAME = "manuciaocv"
 WAGTAILEMBEDS_RESPONSIVE_HTML = True
+WAGTAILMARKDOWN_AUTODOWNLOAD_FONTAWESOME = False
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash

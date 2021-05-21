@@ -6,13 +6,27 @@ Files inside this folder can contain global styles used in the project.
 /* Additonal Base Stylesheets */
 /* Components */
 .port_about_sections .personal_details table.info-list {
-  color: #fff; }
-  .port_about_sections .personal_details table.info-list tbody tr td:nth-child(1) {
-    color: #fcc255 !important; }
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  padding-top: 10px; }
+  .port_about_sections .personal_details table.info-list tr p {
+    margin-bottom: 8px;
+    color: #fff; }
+  .port_about_sections .personal_details table.info-list tbody tr td:nth-child(1) p {
+    color: #fcc255 !important;
+    padding-right: 10px;
+    font-weight: 400;
+    font-size: 16px;
+    min-width: 110px;
+    display: inline-block; }
+  .port_about_sections .personal_details table.info-list tbody tr td:nth-child(2) a {
+    color: #fff;
+    word-break: break-all; }
 
 .port_about_sections .personal_details .table td,
 .port_about_sections .personal_details .table th {
-  padding: .65rem 0 !important;
+  padding: .3rem 0 !important;
   border-top: none !important; }
 
 /* Pages */

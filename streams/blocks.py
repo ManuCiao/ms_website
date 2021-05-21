@@ -1,8 +1,12 @@
+from django import forms
+from django.template.loader import render_to_string
+from wagtail.contrib.table_block.blocks import TableBlock
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.snippets.blocks import SnippetChooserBlock
-from django import forms
-from wagtail.contrib.table_block.blocks import TableBlock
+from wagtailfontawesome.blocks import IconBlock
+from wagtailmarkdown.blocks import MarkdownBlock
+
 
 NEW_TABLE_OPTIONS = {
     'minSpareRows': 0,
@@ -33,6 +37,11 @@ NEW_TABLE_OPTIONS = {
     'renderer': 'html',
     'autoColumnSize': False,
 }
+
+class MarkDownBlock(blocks.StreamBlock):
+    markdown = MarkdownBlock(icon="code")
+
+
 class TitleBlock(blocks.StructBlock):
 
     sub_heading = blocks.CharBlock(required=True, help_text="Enter sub-heading")
@@ -111,11 +120,13 @@ class ImageAndTestBlock(blocks.StructBlock):
 
 
 class AnyTableBlock(TableBlock):
-    pass
+    table = TableBlock(table_options=NEW_TABLE_OPTIONS, help_text="Enter your details in this table")
 
 class AboutMeBlock(blocks.StructBlock):
     title = TitleBlock(help_text="Enter heading and subheading")
+    title_table = TitleBlock(help_text="Enter heading and subheading of the table")
     table = TableBlock(table_options=NEW_TABLE_OPTIONS, help_text="Enter your details in this table")
+    markdown_table = MarkDownBlock(help_text="Enter your details in markdown", required=False)
 
     class Meta:
         template = "streams/about_me.html"
