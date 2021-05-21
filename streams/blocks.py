@@ -40,10 +40,14 @@ NEW_TABLE_OPTIONS = {
 }
 
 
-class MarkDownBlock(blocks.StreamBlock):
+class AnyMarkDownBlock(blocks.StreamBlock):
     markdown = MarkdownBlock(
         icon="code", help_text="Enter your details in markdown", required=False
     )
+
+
+class AnyIconBlock(blocks.StreamBlock):
+    icon = IconBlock()
 
 
 class TitleBlock(blocks.StructBlock):
@@ -160,7 +164,7 @@ class AboutMeBlock(blocks.StructBlock):
         help_text="Enter heading and subheading of the table", label="Left Title Table"
     )
     table = AnyTableBlock()
-    # markdown = MarkDownBlock()
+    # markdown = AnyMarkDownBlock()
     title = TitleBlock(
         help_text="Enter heading and subheading", label="Right Title RichText"
     )
