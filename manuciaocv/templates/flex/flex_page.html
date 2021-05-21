@@ -1,5 +1,17 @@
 {% extends "base.html" %}
+{% load wagtailcore_tags %}
 
-{% block content %}
-<h1>{{ page.title }}</h1>
-{% endblock content %}
+<!-- ================== start inner section ================== -->
+
+<div class="port_sec_warapper">
+    
+    {% block content %}
+    <h1>{{ page.title }}</h1>
+        {% for block in page.body %}
+            {% include_block block %}
+        {% endfor %}
+    {% endblock content %}
+
+</div>
+
+<!-- ================== End inner section ================== -->

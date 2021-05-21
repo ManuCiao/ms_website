@@ -43,13 +43,13 @@ class HomePage(Page):
     )
     button_text_01_1 = models.CharField(
         max_length=50, 
-        default="Read More", 
+        default="Download CV", 
         blank=False, 
         help_text="Button text 01 1"
     )
     button_text_01_2 = models.CharField(
         max_length=50, 
-        default="Read More", 
+        default="Download", 
         blank=False, 
         help_text="Button text 01 2"
     )
@@ -61,13 +61,13 @@ class HomePage(Page):
     )
     button_text_02_1 = models.CharField(
         max_length=50, 
-        default="Read More", 
+        default="Send Message", 
         blank=False, 
         help_text="Button text 02 1"
     )
     button_text_02_2 = models.CharField(
         max_length=50, 
-        default="Read More", 
+        default="SEND", 
         blank=False, 
         help_text="Button text 02 2"
     )
@@ -79,13 +79,13 @@ class HomePage(Page):
     )
     button_text_03_1 = models.CharField(
         max_length=50, 
-        default="Read More", 
+        default="Hire Me", 
         blank=False, 
         help_text="Button text 03 1"
     )
     button_text_03_2 = models.CharField(
         max_length=50, 
-        default="Read More", 
+        default="HIRE", 
         blank=False, 
         help_text="Button text 03 2"
     )

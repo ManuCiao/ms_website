@@ -127,28 +127,21 @@
                             </div>
                         </div>
                         <h2 class="about_tophead">{{ value.title.heading }}</h2>
-                        <p class="about_deatils">There are many variations of passages of Lorem Ipsum , but the a
-                            have suffered are some form, by injected humour, or the words which don't look even
-                            slightl. If you use a passage of, you need to be sure there isn't anything look even
-                            slightly believable. If you are going to use a of , you need to be sure there isn't
-                            hidden in the middle the on the tend.</p>
-                        <p>Embarrassing hidden in the middle of text. All the Lorem Ipsum generate on the are
-                            Internet tend to repeat predefined chunks as necessary, making of this the first true
-                            generator on the Internet which don't look even you.</p>
-                        <div class="signature_box">
+                        <p class="about_details">{{ value.ricktext.context|richtext }}</p>
+                        <!-- <div class="signature_box">
                             <div class="name">
                                 <h2>John Weary</h2>
                                 <p>Product Manager</p>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="anout_section_btn">
-                            <a href="javascript:;" class="portfolio_btn btn_yellow">
-                                <span class="first_text">Download CV</span>
-                                <span class="second_text">Download</span>
+                            <a href="{{ value.link_cv_document }}" class="portfolio_btn btn_yellow">
+                                <span class="first_text">{{ value.btn_download_text.sub_heading }}</span>
+                                <span class="second_text">{{ value.btn_download_text.heading }}</span>
                             </a>
-                            <a href="javascript:;" class="portfolio_btn btn_red" id="redirect_contact">
-                                <span class="first_text">Hire Me</span>
-                                <span class="second_text">Contact</span>
+                            <a href="{{ value.hire_url }}" class="portfolio_btn btn_red" id="redirect_contact">
+                                <span class="first_text">{{ value.btn_hire_text.sub_heading }}</span>
+                                <span class="second_text">{{ value.btn_hire_text.heading }}</span>
                             </a>
                         </div>
                     </div>

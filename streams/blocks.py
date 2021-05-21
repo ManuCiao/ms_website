@@ -1,45 +1,49 @@
 from django import forms
+from django.db.models.fields import URLField
 from django.template.loader import render_to_string
 from wagtail.contrib.table_block.blocks import TableBlock
 from wagtail.core import blocks
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.snippets.blocks import SnippetChooserBlock
+from wagtail.documents.blocks import DocumentChooserBlock
+
 from wagtailfontawesome.blocks import IconBlock
 from wagtailmarkdown.blocks import MarkdownBlock
 
-
 NEW_TABLE_OPTIONS = {
-    'minSpareRows': 0,
-    'startRows': 4,
-    'startCols': 4,
-    'colHeaders': False,
-    'rowHeaders': False,
-    'contextMenu': [
-        'row_above',
-        'row_below',
-        '---------',
-        'col_left',
-        'col_right',
-        '---------',
-        'remove_row',
-        'remove_col',
-        '---------',
-        'undo',
-        'redo',
-        '---------',
-        'copy',
-        'cut'
-        '---------',
-        'alignment',
+    "minSpareRows": 0,
+    "startRows": 4,
+    "startCols": 4,
+    "colHeaders": False,
+    "rowHeaders": False,
+    "contextMenu": [
+        "row_above",
+        "row_below",
+        "---------",
+        "col_left",
+        "col_right",
+        "---------",
+        "remove_row",
+        "remove_col",
+        "---------",
+        "undo",
+        "redo",
+        "---------",
+        "copy",
+        "cut" "---------",
+        "alignment",
     ],
-    'editor': 'text',
-    'stretchH': 'all',
-    'renderer': 'html',
-    'autoColumnSize': False,
+    "editor": "text",
+    "stretchH": "all",
+    "renderer": "html",
+    "autoColumnSize": False,
 }
 
+
 class MarkDownBlock(blocks.StreamBlock):
-    markdown = MarkdownBlock(icon="code")
+    markdown = MarkdownBlock(
+        icon="code", help_text="Enter your details in markdown", required=False
+    )
 
 
 class TitleBlock(blocks.StructBlock):
@@ -74,6 +78,32 @@ class Link(blocks.StructBlock):
 
     class Meta:
         value_class = LinkValue
+
+
+class AnyRichTextBlock(blocks.StructBlock):
+    context = blocks.RichTextBlock(
+        features=[
+            "h1",
+            "h2",
+            "h2",
+            "h4",
+            "h5",
+            "h6",
+            "bold",
+            "italic",
+            "ol",
+            "ul",
+            "hr",
+            "link",
+            "document-link",
+            "image",
+            "embed",
+            "code",
+            "subscript",
+            "strikethrough",
+            "blockquote",
+        ]
+    )
 
 
 class Card(blocks.StructBlock):
@@ -120,21 +150,38 @@ class ImageAndTestBlock(blocks.StructBlock):
 
 
 class AnyTableBlock(TableBlock):
-    table = TableBlock(table_options=NEW_TABLE_OPTIONS, help_text="Enter your details in this table")
+    table = TableBlock(
+        table_options=NEW_TABLE_OPTIONS, help_text="Enter your details in this table"
+    )
+
 
 class AboutMeBlock(blocks.StructBlock):
-    title = TitleBlock(help_text="Enter heading and subheading")
-    title_table = TitleBlock(help_text="Enter heading and subheading of the table")
-    table = TableBlock(table_options=NEW_TABLE_OPTIONS, help_text="Enter your details in this table")
-    markdown_table = MarkDownBlock(help_text="Enter your details in markdown", required=False)
+    title_table = TitleBlock(
+        help_text="Enter heading and subheading of the table", label="Left Title Table"
+    )
+    table = AnyTableBlock()
+    # markdown = MarkDownBlock()
+    title = TitleBlock(
+        help_text="Enter heading and subheading", label="Right Title RichText"
+    )
+    ricktext = AnyRichTextBlock(help_text="Enter your richtext here")
+    link_cv_document = DocumentChooserBlock()
+    btn_download_text = TitleBlock(
+        help_text="Enter 2 texts for btn", label="First Button Text"
+    )
+    hire_url = URLField(
+        max_length=255, blank=True, null=True, help_text="Write the url to link to"
+    )
+    btn_hire_text = TitleBlock(
+        help_text="Enter 2 texts for btn", label="Second Button Text"
+    )
 
     class Meta:
         template = "streams/about_me.html"
-        icon = "doc-full-inverse"
-        label = "About me"
+
 
 ## about me block
-# image 445x490
+# image 445x490K)
 # ps_name text
 # ps_designation text
 # age value text
@@ -277,5 +324,3 @@ class TestimonialsBlock(blocks.StructBlock):
 # port_head_wrapper text
 
 ### create forms app for the contact form ###
-
-
