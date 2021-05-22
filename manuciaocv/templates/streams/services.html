@@ -8,73 +8,26 @@
                 <div class="col-md-12">
                     <div class="port_heading_wrapper text-center prt_bottompadder40">
                         <div class="port_sub_heading_wrapper">
-                            <h2 class="port_sub_heading">Take a look</h2>
+                            <h2 class="port_sub_heading">{{ value.title.sub_heading }} </h2>
                         </div>
-                        <h1 class="port_heading">My Services</h1>
+                        <h1 class="port_heading">{{ value.title.heading }}</h1>
                     </div>
                 </div>
             </div>
             <div class="row">
+                {% for block in value.services %}
                 <div class="col-lg-4 col-md-6 text-center">
                     <div class="port_services_box_wrapper">
                         <div class="port_services_box">
-                            <img src="{% static 'images/services/port_services01.png' %}" alt="service-image">
-                            <h2 class="project_heading">Web Design</h2>
-                            <p class="project_pera">Vestibulum condimentum vehicula massa, ac convallis nullarell.
+                            {% image block.image_service fill-80x80 as sv_img %}
+                            <img src="{{ sv_img.url }}" alt="{{ sv_img.alt }}">
+                            <h2 class="project_heading">{{ block.service_title }}</h2>
+                            <p class="project_pera">{{ block.service_richtext.context|richtext }}
                             </p>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 col-md-6 text-center">
-                    <div class="port_services_box_wrapper">
-                        <div class="port_services_box">
-                            <img src="{% static 'images/services/port_services02.png' %}" alt="service-image">
-                            <h2 class="project_heading">Photoshop</h2>
-                            <p class="project_pera">Vestibulum condimentum vehicula massa, ac convallis nullarell.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 text-center">
-                    <div class="port_services_box_wrapper">
-                        <div class="port_services_box">
-                            <img src="{% static 'images/services/port_services03.png' %}" alt="service-image">
-                            <h2 class="project_heading">Marketing</h2>
-                            <p class="project_pera">Vestibulum condimentum vehicula massa, ac convallis nullarell.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 text-center">
-                    <div class="port_services_box_wrapper">
-                        <div class="port_services_box">
-                            <img src="{% static 'images/services/port_services04.png' %}" alt="service-image">
-                            <h2 class="project_heading">Illustrator</h2>
-                            <p class="project_pera">Vestibulum condimentum vehicula massa, ac convallis nullarell.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 text-center">
-                    <div class="port_services_box_wrapper">
-                        <div class="port_services_box ">
-                            <img src="{% static 'images/services/port_services05.png' %}" alt="service-image">
-                            <h2 class="project_heading">Social Media </h2>
-                            <p class="project_pera">Vestibulum condimentum vehicula massa, ac convallis nullarell.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 text-center">
-                    <div class="port_services_box_wrapper">
-                        <div class="port_services_box">
-                            <img src="{% static 'images/services/port_services06.png' %}" alt="service-image">
-                            <h2 class="project_heading">Graphics</h2>
-                            <p class="project_pera">Vestibulum condimentum vehicula massa, ac convallis nullarell.
-                            </p>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>

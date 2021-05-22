@@ -47,7 +47,7 @@ class AnyMarkDownBlock(blocks.StreamBlock):
 
 
 class AnyIconBlock(blocks.StreamBlock):
-    icon = IconBlock()
+    icon = IconBlock(help_text="Enter your icon from fontawesome",)
 
 
 class TitleBlock(blocks.StructBlock):
@@ -86,6 +86,7 @@ class Link(blocks.StructBlock):
 
 class AnyRichTextBlock(blocks.StructBlock):
     context = blocks.RichTextBlock(
+        help_text="Enter your richtext here",
         features=[
             "h1",
             "h2",
@@ -171,7 +172,7 @@ class AboutMeBlock(blocks.StructBlock):
     title = TitleBlock(
         help_text="Enter heading and subheading", label="Right Title RichText"
     )
-    ricktext = AnyRichTextBlock(help_text="Enter your richtext here")
+    ricktext = AnyRichTextBlock()
     link_cv_document = DocumentChooserBlock()
     btn_download_text = TitleBlock(
         help_text="Enter 2 texts for btn", label="First Button Text"
@@ -211,7 +212,7 @@ class EducationBlock(blocks.StructBlock):
     education_place_h3 = blocks.CharBlock(
         max_length=60, help_text="Max length 60 characters"
     )
-    education_place_richtext = AnyRichTextBlock(help_text="Enter your richtext here")
+    education_place_richtext = AnyRichTextBlock()
 
 
 class EducationsBlock(blocks.StructBlock):
@@ -256,19 +257,24 @@ class ExperienceBlock(blocks.StructBlock):
 # ex_details p text
 # more_content p text
 
+class ServiceBlock(blocks.StructBlock):
+    image_service = ImageChooserBlock(
+        help_text="Enter the image for the service", label="Image Service"
+    )
+    service_title = blocks.CharBlock(max_length=60, help_text="Max length 60 characters")
+    service_richtext = AnyRichTextBlock()
+
 
 class ServicesBlock(blocks.StructBlock):
     title = TitleBlock(help_text="Enter heading and subheading")
+    services = blocks.ListBlock(ServiceBlock)
+
 
     class Meta:
         template = "streams/services.html"
         icon = "cog"
         label = "Services"
 
-
-## my services block
-# port_sub_heading text
-# port_heading text
 
 #### repeat block ####
 # image icon
