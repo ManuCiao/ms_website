@@ -160,6 +160,9 @@ class AnyTableBlock(TableBlock):
 
 
 class AboutMeBlock(blocks.StructBlock):
+    image_table = ImageChooserBlock(
+        help_text="Enter the image for the left table", label="Image Table"
+    )
     title_table = TitleBlock(
         help_text="Enter heading and subheading of the table", label="Left Title Table"
     )
@@ -182,34 +185,6 @@ class AboutMeBlock(blocks.StructBlock):
 
     class Meta:
         template = "streams/about_me.html"
-
-
-## about me block
-# image 445x490K)
-# ps_name text
-# ps_designation text
-# age value text
-# address value text
-# email value url
-# residence value text
-# phone value text
-# freelance value text
-# github url
-# linkedin url
-# medium url
-# twitter url
-# figma url
-
-# port_sub_heading text
-# about_tophead text
-# signature name h2 text
-# signature name p text
-# button document
-# button 1 text 1
-# button 1 txt 2
-# button url
-# button 2 text 1
-# button 2 text 2
 
 
 class EducationBlock(blocks.StructBlock):

@@ -11,7 +11,8 @@
                 <div class="col-xl-5 col-lg-12 col-md-12">
                     <div class="about_leftsection ">
                         <div class="img_wrapper">
-                            <img class="img-fluid" src="http://via.placeholder.com/445x490" alt="About"
+                            {% image value.image_table fill-445x490 as tb_img %}
+                            <img class="img-fluid" src="{{ tb_img.url }}" alt="{{ tb_img.alt }}"
                                 title="more information click + icon">
                             <div class="icon" title="more information click + icon">
                                 <div class="iconbox">
