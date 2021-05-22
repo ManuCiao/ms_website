@@ -225,18 +225,12 @@ class EducationsBlock(blocks.StructBlock):
 
 
 class ProgressBarBlock(blocks.StructBlock):
-    title = TitleBlock(help_text="Enter heading and subheading")
+    progress_bar = blocks.ListBlock(TitleBlock(help_text="Enter percentage and title"))
 
     class Meta:
         template = "streams/progress_bars.html"
         icon = "spinner"
         label = "Progress Bars"
-
-
-## progress bar block
-#### repeat block ####
-# data-percent text
-# circle span text
 
 
 class ExperienceBlock(blocks.StructBlock):

@@ -6,40 +6,16 @@
         <div class="container">
             <div class="port_progress_mainbox">
                 <div class="row">
+                    {% for block in value.pgr_bar %}
                     <div class="col-xl-3 col-lg-6 col-sm-6 text-center">
                         <div class="progressbar">
-                            <div class="second circle" data-percent="92">
+                            <div class="second circle" data-percent="{{ block.sub_heading }}">
                                 <strong></strong>
                             </div>
-                            <span>Projects </span>
+                            <span>{{ block.heading }} </span>
                         </div>
                     </div>
-
-                    <div class="col-xl-3 col-lg-6 col-sm-6 text-center">
-                        <div class="progressbar">
-                            <div class="second circle" data-percent="100">
-                                <strong></strong>
-                            </div>
-                            <span>Team Work</span>
-                        </div>
-                    </div>
-
-                    <div class="col-xl-3 col-lg-6 col-sm-6 text-center">
-                        <div class="progressbar">
-                            <div class="second circle" data-percent="95">
-                                <strong></strong>
-                            </div>
-                            <span>Happy Clients</span>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-lg-6 col-sm-6 text-center">
-                        <div class="progressbar">
-                            <div class="second circle" data-percent="80">
-                                <strong></strong>
-                            </div>
-                            <span>Creativity</span>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
 
