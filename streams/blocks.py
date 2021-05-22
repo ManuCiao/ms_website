@@ -1,5 +1,5 @@
 from django import forms
-from django.db.models.fields import URLField
+from django.db.models.fields import CharField, URLField
 from django.template.loader import render_to_string
 from wagtail.contrib.table_block.blocks import TableBlock
 from wagtail.core import blocks
@@ -139,7 +139,7 @@ class RadioSelectBlock(blocks.ChoiceBlock):
 class ImageAndTestBlock(blocks.StructBlock):
     image = ImageChooserBlock()
     image_alignment = RadioSelectBlock(
-        choices=(("left", "imange to the left"), ("right", "image to the right")),
+        choices=(("left", "image to the left"), ("right", "image to the right")),
         default="left",
         help_text="image with text",
     )
@@ -176,9 +176,7 @@ class AboutMeBlock(blocks.StructBlock):
     btn_download_text = TitleBlock(
         help_text="Enter 2 texts for btn", label="First Button Text"
     )
-    hire_url = URLField(
-        max_length=255, blank=True, null=True, help_text="Write the url to link to"
-    )
+    hire_url = Link(help_text="Write the url to link to", label="Hire Button URL")
     btn_hire_text = TitleBlock(
         help_text="Enter 2 texts for btn", label="Second Button Text"
     )
@@ -188,23 +186,42 @@ class AboutMeBlock(blocks.StructBlock):
 
 
 class EducationBlock(blocks.StructBlock):
+    block_alignment = RadioSelectBlock(
+        choices=(("left", "block to the left"), ("right", "block to the right")),
+        default="left",
+        help_text="Block Alignment",
+    )
+    block_color = RadioSelectBlock(
+        choices=(
+            ("bg-pink", "pink background"),
+            ("bg-yellow", "yellow background"),
+            ("bg-orange", "orange background"),
+            ("bg-cyan", "cyan background"),
+        ),
+        default="bg-pink",
+        help_text="Block Color",
+    )
+    number_block = blocks.CharBlock(max_length=60, help_text="Max length 60 characters")
+    edu_mainyear = blocks.CharBlock(max_length=60, help_text="Max length 60 characters")
+    state_title = blocks.CharBlock(max_length=60, help_text="Max length 60 characters")
+    number_title = blocks.CharBlock(max_length=60, help_text="Max length 60 characters")
+    education_place_span = blocks.CharBlock(
+        max_length=60, help_text="Max length 60 characters"
+    )
+    education_place_h3 = blocks.CharBlock(
+        max_length=60, help_text="Max length 60 characters"
+    )
+    education_place_richtext = AnyRichTextBlock(help_text="Enter your richtext here")
+
+
+class EducationsBlock(blocks.StructBlock):
     title = TitleBlock(help_text="Enter heading and subheading")
+    education_block = blocks.ListBlock(EducationBlock)
 
     class Meta:
         template = "streams/education.html"
         icon = "grip"
         label = "Education"
-
-
-## education block
-# port_sub_heading text
-# port_heading text
-
-#### repeat block ####
-# left_title text
-# right_title text
-# education_place text h3
-# education_place richtext p
 
 
 class ProgressBarBlock(blocks.StructBlock):

@@ -108,7 +108,7 @@ class HomePage(Page):
 
     body = StreamField([
         ("about_me", blocks.AboutMeBlock()),
-        ("education", blocks.EducationBlock()),
+        ("education", blocks.EducationsBlock()),
         ("progress_bars", blocks.ProgressBarBlock()),
         ("experience", blocks.ExperienceBlock()),
         ("services", blocks.ServicesBlock()),
