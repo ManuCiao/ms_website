@@ -106,15 +106,19 @@ class HomePage(Page):
         on_delete=models.SET_NULL
     )
 
-    body = StreamField([
-        ("about_me", blocks.AboutMeBlock()),
-        ("education", blocks.EducationsBlock()),
-        ("progress_bars", blocks.ProgressBarBlock()),
-        ("experience", blocks.ExperiencesBlock()),
-        ("services", blocks.ServicesBlock()),
-        ("my_projects", blocks.MyProjectsBlock()),
-        ("testimonial", blocks.TestimonialsBlock())
-    ], null=True, blank=True)
+    body = StreamField(
+        [
+            ("about_me", blocks.AboutMeBlock()),
+            ("education", blocks.EducationsBlock()),
+            ("progress_bars", blocks.ProgressBarBlock()),
+            ("experience", blocks.ExperiencesBlock()),
+            ("services", blocks.ServicesBlock()),
+            ("my_projects", blocks.MyProjectsBlock()),
+            ("testimonial", blocks.TestimonialsBlock())
+        ], 
+        null=True, 
+        blank=True,
+    )
     
 
     content_panels = Page.content_panels + [

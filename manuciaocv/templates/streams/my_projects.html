@@ -8,9 +8,9 @@
                 <div class="col-md-12">
                     <div class="port_heading_wrapper text-center prt_bottompadder40">
                         <div class="port_sub_heading_wrapper">
-                            <h2 class="port_sub_heading">Quality Work</h2>
+                            <h2 class="port_sub_heading">{{ value.title.sub_heading }}</h2>
                         </div>
-                        <h1 class="port_heading">My Projects</h1>
+                        <h1 class="port_heading">{{ value.title.heading }}</h1>
                     </div>
                 </div>
 
@@ -18,113 +18,47 @@
                     <div class="gallery_nav">
                         <ul>
                             <li><a data-filter="*" class="gallery_active">all</a></li>
-                            <li><a data-filter=".design"> Design</a></li>
-                            <li><a data-filter=".development">Development</a></li>
-                            <li><a data-filter=".photoshop">Photoshop</a></li>
-                            <li><a data-filter=".template">Template</a></li>
+                            {% if value.data_filter_01 %}
+                            <li><a
+                                    data-filter=".{{ value.data_filter_01 }}">{{ value.data_filter_01 }}</a>
+                            </li>
+                            {% endif %}
+                            {% if value.data_filter_02 %}
+                            <li><a
+                                    data-filter=".{{ value.data_filter_02 }}">{{ value.data_filter_02 }}</a>
+                            </li>
+                            {% endif %}
+                            {% if value.data_filter_03 %}
+                            <li><a
+                                    data-filter=".{{ value.data_filter_03 }}">{{ value.data_filter_03 }}</a>
+                            </li>
+                            {% endif %}
+                            {% if value.data_filter_04 %}
+                            <li><a
+                                    data-filter=".{{ value.data_filter_04 }}">{{ value.data_filter_04 }}</a>
+                            </li>
+                            {% endif %}
                         </ul>
                     </div>
                     <div class="gallery_container">
                         <div class="gallery_grid">
-                            <div class="grid-item design">
-                                <a href="http://via.placeholder.com/600x600" class="view">
+                            {% for block in value.my_project_block %}
+                            <div class="grid-item {{ block.data_filter_classname_01 }} {{ block.data_filter_classname_02 }}">
+                                {% image block.image fill-600x600 as view_img %}
+                                <a href="{{ view_img.url }}" class="view">
                                     <div class="grid_img">
-                                        <img src="http://via.placeholder.com/350x350" alt="project-img">
+                                        <img src="{{ view_img.url }}" width="350" height="350" alt="{{ view_img.alt }}">
                                     </div>
                                     <div class="grid-content">
-                                        <h3>Moc Design</h3>
-                                        <span>Design</span>
+                                        <h3>{{ block.grid_content_h3 }}</h3>
+                                        <span>{{ block.data_filter_classname_01 }}</span>
+                                        {% if block.data_filter_classname_02 %}
+                                        <span>{{ block.data_filter_classname_02 }}</span>
+                                        {% endif %}
                                     </div>
                                 </a>
                             </div>
-                            <div class="grid-item development template">
-                                <a href="http://via.placeholder.com/600x600" class="view">
-                                    <div class="grid_img">
-                                        <img src="http://via.placeholder.com/350x350" alt="project-img">
-                                    </div>
-                                    <div class="grid-content">
-                                        <h3>Moc Development</h3>
-                                        <span>Development</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="grid-item development">
-                                <a href="http://via.placeholder.com/600x600" class="view">
-                                    <div class="grid_img">
-                                        <img src="http://via.placeholder.com/350x350" alt="project-img">
-                                    </div>
-                                    <div class="grid-content">
-                                        <h3>Moc Development</h3>
-                                        <span>Development</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="grid-item photoshop template">
-                                <a href="http://via.placeholder.com/600x600" class="view">
-                                    <div class="grid_img">
-                                        <img src="http://via.placeholder.com/350x350" alt="project-img">
-                                    </div>
-                                    <div class="grid-content">
-                                        <h3>Moc Photoshop</h3>
-                                        <span>Photoshop</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="grid-item design">
-                                <a href="http://via.placeholder.com/600x600" class="view">
-                                    <div class="grid_img">
-                                        <img src="http://via.placeholder.com/350x350" alt="project-img">
-                                    </div>
-                                    <div class="grid-content">
-                                        <h3>Moc Design</h3>
-                                        <span>Design</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="grid-item design photoshop">
-                                <a href="http://via.placeholder.com/600x600" class="view">
-                                    <div class="grid_img">
-                                        <img src="http://via.placeholder.com/350x350" alt="project-img">
-                                    </div>
-                                    <div class="grid-content">
-                                        <h3>Moc Photoshop</h3>
-                                        <span>Photoshop</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="grid-item development">
-                                <a href="http://via.placeholder.com/600x600" class="view">
-                                    <div class="grid_img">
-                                        <img src="http://via.placeholder.com/350x350" alt="project-img">
-                                    </div>
-                                    <div class="grid-content">
-                                        <h3>Moc Development</h3>
-                                        <span>Development</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="grid-item development template">
-                                <a href="http://via.placeholder.com/600x600" class="view">
-                                    <div class="grid_img">
-                                        <img src="http://via.placeholder.com/350x350" alt="project-img">
-                                    </div>
-                                    <div class="grid-content">
-                                        <h3>Moc Development</h3>
-                                        <span>Development</span>
-                                    </div>
-                                </a>
-                            </div>
-                            <div class="grid-item design">
-                                <a href="http://via.placeholder.com/600x600" class="view">
-                                    <div class="grid_img">
-                                        <img src="http://via.placeholder.com/350x350" alt="project-img">
-                                    </div>
-                                    <div class="grid-content">
-                                        <h3>Moc Design</h3>
-                                        <span>Design</span>
-                                    </div>
-                                </a>
-                            </div>
+                            {% endfor %}
                         </div>
                     </div>
                 </div>

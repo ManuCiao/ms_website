@@ -204,6 +204,7 @@ class InfoBlock(blocks.StructBlock):
         help_text="Block Color",
     )
 
+
 class EducationBlock(blocks.StructBlock):
     info_block = InfoBlock(help_text="Enter block alignement and color")
     number_block = blocks.CharBlock(max_length=60, help_text="Enter first, second, third or fourth")
@@ -249,6 +250,7 @@ class ExperienceBlock(blocks.StructBlock):
     ex_details_p = blocks.CharBlock(max_length=255, help_text="Max length 60 characters")
     more_content_p = blocks.CharBlock(max_length=255, help_text="Max length 60 characters")
 
+
 class ExperiencesBlock(blocks.StructBlock):
     title = TitleBlock(help_text="Enter heading and subheading")
     experience_block = blocks.ListBlock(ExperienceBlock)
@@ -257,6 +259,7 @@ class ExperiencesBlock(blocks.StructBlock):
         template = "streams/experience.html"
         icon = "list-ul"
         label = "Experience"
+
 
 class ServiceBlock(blocks.StructBlock):
     image_service = ImageChooserBlock(
@@ -276,24 +279,25 @@ class ServicesBlock(blocks.StructBlock):
         label = "Services"
 
 
+class MyProjectBlock(blocks.StructBlock):
+    data_filter_classname_01 = blocks.CharBlock(max_length=60, help_text="Max length 60 characters")
+    data_filter_classname_02 = blocks.CharBlock(max_length=60, help_text="Max length 60 characters", required=False)
+    image = ImageChooserBlock()
+    grid_content_h3 = blocks.CharBlock(max_length=60, help_text="Max length 60 characters")
+    
+
 class MyProjectsBlock(blocks.StructBlock):
     title = TitleBlock(help_text="Enter heading and subheading")
+    data_filter_01 = blocks.CharBlock(max_length=60, help_text="Max length 60 characters", required=False)
+    data_filter_02 = blocks.CharBlock(max_length=60, help_text="Max length 60 characters", required=False)
+    data_filter_03 = blocks.CharBlock(max_length=60, help_text="Max length 60 characters", required=False)
+    data_filter_04 = blocks.CharBlock(max_length=60, help_text="Max length 60 characters", required=False)
+    my_project_block = blocks.ListBlock(MyProjectBlock)
 
     class Meta:
         template = "streams/my_projects.html"
         icon = "image"
         label = "My Projects"
-
-
-## my projects block
-# port_sub_heading text
-# port_heading text
-
-#### repeat block ####
-# data-filter text
-# image
-# grid-content h3 text
-# grid-content span text
 
 
 class TestimonialBlock(blocks.StructBlock):
