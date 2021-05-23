@@ -7,7 +7,7 @@ from wagtail.core.blocks import RichTextBlock
 from streams import blocks
 
 class FlexPage(Page):
-
+    parent_page_types = ["home.HomePage", "flex.FlexPage"]
     body = StreamField([
         ("about_me", blocks.AboutMeBlock()),
         ("education", blocks.EducationsBlock()),

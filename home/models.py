@@ -14,6 +14,9 @@ from streams import blocks
 
 
 class HomePage(Page):
+    parent_page_types = ["wagtailcore.Page"]
+    subpage_types = ["flex.FlexPage"]
+    max_count = 1
     lead_text = models.CharField(
         max_length=255,
         blank=True,
