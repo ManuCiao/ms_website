@@ -3,6 +3,7 @@ from django.db.models.fields import CharField, URLField
 from django.template.loader import render_to_string
 from wagtail.contrib.table_block.blocks import TableBlock
 from wagtail.core import blocks
+from wagtail.core.blocks.list_block import ListBlock
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.snippets.blocks import SnippetChooserBlock
 from wagtail.documents.blocks import DocumentChooserBlock
@@ -186,7 +187,7 @@ class AboutMeBlock(blocks.StructBlock):
         template = "streams/about_me.html"
 
 
-class EducationBlock(blocks.StructBlock):
+class InfoBlock(blocks.StructBlock):
     block_alignment = RadioSelectBlock(
         choices=(("left", "block to the left"), ("right", "block to the right")),
         default="left",
@@ -194,15 +195,18 @@ class EducationBlock(blocks.StructBlock):
     )
     block_color = RadioSelectBlock(
         choices=(
-            ("bg-pink", "pink background"),
-            ("bg-yellow", "yellow background"),
-            ("bg-orange", "orange background"),
-            ("bg-cyan", "cyan background"),
+            ("pink", "pink background"),
+            ("yellow", "yellow background"),
+            ("orange", "orange background"),
+            ("cyan", "cyan background"),
         ),
-        default="bg-pink",
+        default="pink",
         help_text="Block Color",
     )
-    number_block = blocks.CharBlock(max_length=60, help_text="Max length 60 characters")
+
+class EducationBlock(blocks.StructBlock):
+    info_block = InfoBlock(help_text="Enter block alignement and color")
+    number_block = blocks.CharBlock(max_length=60, help_text="Enter first, second, third or fourth")
     edu_mainyear = blocks.CharBlock(max_length=60, help_text="Max length 60 characters")
     state_title = blocks.CharBlock(max_length=60, help_text="Max length 60 characters")
     number_title = blocks.CharBlock(max_length=60, help_text="Max length 60 characters")
@@ -235,27 +239,24 @@ class ProgressBarBlock(blocks.StructBlock):
 
 
 class ExperienceBlock(blocks.StructBlock):
+    info_block = InfoBlock(help_text="Enter block alignement and color")
+    ex_leftside_h1_up = blocks.CharBlock(max_length=60, help_text="Max length 60 characters")
+    ex_leftside_h4 = blocks.CharBlock(max_length=60, help_text="Max length 60 characters")
+    ex_leftside_h1_down = blocks.CharBlock(max_length=60, help_text="Max length 60 characters")
+    ex_rightside_h4 = blocks.CharBlock(max_length=60, help_text="Max length 60 characters")
+    ex_rightside_span = blocks.CharBlock(max_length=60, help_text="Max length 60 characters")
+    company_span = blocks.CharBlock(max_length=60, help_text="Max length 60 characters")
+    ex_details_p = blocks.CharBlock(max_length=255, help_text="Max length 60 characters")
+    more_content_p = blocks.CharBlock(max_length=255, help_text="Max length 60 characters")
+
+class ExperiencesBlock(blocks.StructBlock):
     title = TitleBlock(help_text="Enter heading and subheading")
+    experience_block = blocks.ListBlock(ExperienceBlock)
 
     class Meta:
         template = "streams/experience.html"
         icon = "list-ul"
         label = "Experience"
-
-
-## experience block
-# port_sub_heading text
-# port_heading text
-
-#### repeat block ####
-# color text
-# ex_leftside h1 up text
-# ex_leftside h4 text
-# ex_leftside h1 down text
-# ex_rightside h4 text
-# ex_rightside span text
-# ex_details p text
-# more_content p text
 
 class ServiceBlock(blocks.StructBlock):
     image_service = ImageChooserBlock(
@@ -269,17 +270,10 @@ class ServicesBlock(blocks.StructBlock):
     title = TitleBlock(help_text="Enter heading and subheading")
     services = blocks.ListBlock(ServiceBlock)
 
-
     class Meta:
         template = "streams/services.html"
         icon = "cog"
         label = "Services"
-
-
-#### repeat block ####
-# image icon
-# project_heading text
-# project_pera text
 
 
 class MyProjectsBlock(blocks.StructBlock):

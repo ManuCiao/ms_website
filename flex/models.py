@@ -12,7 +12,7 @@ class FlexPage(Page):
         ("about_me", blocks.AboutMeBlock()),
         ("education", blocks.EducationsBlock()),
         ("progress_bars", blocks.ProgressBarBlock()),
-        ("experience", blocks.ExperienceBlock()),
+        ("experience", blocks.ExperiencesBlock()),
         ("services", blocks.ServicesBlock()),
         ("my_projects", blocks.MyProjectsBlock()),
         ("testimonial", blocks.TestimonialsBlock()),

@@ -8,15 +8,15 @@
                 <div class="col-md-12">
                     <div class="port_heading_wrapper text-center prt_bottompadder40">
                         <div class="port_sub_heading_wrapper">
-                            <h2 class="port_sub_heading">{{ value.title.heading }} </h2>
+                            <h2 class="port_sub_heading">{{ value.title.heading }}</h2>
                         </div>
-                        <h1 class="port_heading">{{ value.title.sub_heading }} </h1>
+                        <h1 class="port_heading">{{ value.title.sub_heading }}</h1>
                     </div>
                 </div>
                 <div class="col-md-12">
                     <div class="education_main_wrapper ">
                         {% for block in value.education_block %}
-                        {% if block.block_alignment == 'right' %}
+                        {% if block.info_block.block_alignment == 'right' %}
                         <!-- right box -->
                         <div class="education_box education_firsrtbox {{ block.number_block }}box">
                             <div class="row">
@@ -35,7 +35,7 @@
                                                     <div class="left_title">
                                                         <h4>{{ block.number_title }}</h4>
                                                     </div>
-                                                    <div class="right_title {{ block.block_color }}">
+                                                    <div class="right_title bg-{{ block.info_block.block_color }}">
                                                         <h4>{{ block.state_title }}</h4>
                                                     </div>
                                                 </div>
@@ -61,7 +61,7 @@
                                         <div class="education_minfo education_rinfo ">
                                             <div class="prt_rightside_title">
                                                 <div class="left_title_box">
-                                                    <div class="right_title {{ block.block_color }}">
+                                                    <div class="right_title bg-{{ block.info_block.block_color }}">
                                                         <h4>{{ block.state_title }}</h4>
                                                     </div>
                                                     <div class="left_title">

@@ -8,163 +8,64 @@
                 <div class="col-md-12">
                     <div class="port_heading_wrapper text-center prt_bottompadder40">
                         <div class="port_sub_heading_wrapper">
-                            <h2 class="port_sub_heading">Involvement</h2>
+                            <h2 class="port_sub_heading">{{ value.title.heading }}</h2>
                         </div>
-                        <h1 class="port_heading">My Experience</h1>
+                        <h1 class="port_heading">{{ value.title.sub_heading }}</h1>
                     </div>
                 </div>
             </div>
             <div class="row">
+                {% for block in value.experience_block %}
+                {% if block.info_block.block_alignment == 'right' %}
                 <div class="col-lg-6 col-md-12">
                     <div class="exprince_box ex_leftsidebox">
                         <div class="row">
                             <div class="col-lg-4 col-md-4 col-sm-4 col-12 padding-0 w-100">
                                 <div class="ex_leftside">
-                                    <h1>2018</h1>
-                                    <h4>Feb to Dec</h4>
-                                    <h1>2019</h1>
+                                    <h1>{{ block.ex_leftside_h1_up }}</h1>
+                                    <h4>{{ block.ex_leftside_h4 }}</h4>
+                                    <h1>{{ block.ex_leftside_h1_down }}</h1>
                                 </div>
                             </div>
                             <div class="col-lg-8 col-md-8 col-sm-8 col-12 w-100">
                                 <div class="ex_rightside">
-                                    <h4>Senior UI/UX <span data-hover="Designer"
-                                            class="data_hover c-pink">Designer</span></h4>
-                                    <span class="c-pink">Adobe</span>
-                                    <p class="ex_details">Sed ut unde omnis iste natus error sit totam rem aperiam
-                                        are many variations of done.</p>
-                                    <p class="more_content">Extra contant Sed ut perspiciatis unde omnis iste natus.
-                                    </p>
+                                    <h4>{{ block.ex_rightside_h4 }} <span data-hover="{{ block.ex_rightside_span }}"
+                                            class="data_hover c-{{ block.info_block.block_color }}">{{ block.ex_rightside_span }}</span></h4>
+                                    <span class="c-{{ block.info_block.block_color }}">{{ block.company_span }}</span>
+                                    <p class="ex_details">{{ block.ex_details_p }}</p>
+                                    <p class="more_content">{{ block.more_content_p }}</p>
                                     <a class="ex_btn">Read More</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-12">
-                    <div class="exprince_box ex_leftsidebox">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-12 padding-0 w-100">
-                                <div class="ex_leftside">
-                                    <h1>2016</h1>
-                                    <h4>Feb to Dec</h4>
-                                    <h1>2017</h1>
-                                </div>
-                            </div>
-                            <div class="col-lg-8 col-md-8 col-sm-8 col-12 w-100">
-                                <div class="ex_rightside">
-                                    <h4>Senior UI/UX <span data-hover="Designer"
-                                            class="data_hover c-yellow">Designer</span></h4>
-                                    <span class="c-yellow">Adobe</span>
-                                    <p class="ex_details">Sed ut unde omnis iste natus error sit totam rem aperiam
-                                        are many variations of done.</p>
-                                    <p class="more_content">Extra contant Sed ut perspiciatis unde omnis iste natus.
-                                    </p>
-                                    <a class="ex_btn">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% else %}
                 <div class="col-lg-6 col-md-12">
                     <div class="exprince_box ex_rightsidebox">
                         <div class="row">
                             <div class="col-lg-8 col-md-8 col-sm-8 col-12 w-100">
                                 <div class="ex_rightside">
-                                    <h4>Senior PHP <span data-hover="Developer"
-                                            class="data_hover c-orange">Developer</span></h4>
-                                    <span class="c-orange">Facebook</span>
-                                    <p class="ex_details">Sed ut unde omnis iste natus error sit totam rem aperiam
-                                        are many variations of done.</p>
-                                    <p class="more_content">Extra contant Sed ut perspiciatis unde omnis iste natus.
-                                    </p>
+                                    <h4>{{ block.ex_rightside_h4 }} <span data-hover="{{ block.ex_rightside_span }}"
+                                            class="data_hover c-{{ block.info_block.block_color }}">{{ block.ex_rightside_span }}</span></h4>
+                                    <span class="c-{{ block.info_block.block_color }}">{{ block.company_span }}</span>
+                                    <p class="ex_details">{{ block.ex_details_p }}</p>
+                                    <p class="more_content">{{ block.more_content_p }}</p>
                                     <a class="ex_btn">Read More</a>
                                 </div>
                             </div>
                             <div class="col-lg-4 col-md-4 col-sm-4 col-12 padding-0 w-100">
                                 <div class="ex_leftside">
-                                    <h1>2014</h1>
-                                    <h4>Mar to Apr</h4>
-                                    <h1>2015</h1>
+                                    <h1>{{ block.ex_leftside_h1_up }}</h1>
+                                    <h4>{{ block.ex_leftside_h4 }}</h4>
+                                    <h1>{{ block.ex_leftside_h1_down }}</h1>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-12">
-                    <div class="exprince_box ex_rightsidebox">
-                        <div class="row">
-                            <div class="col-lg-8 col-md-8 col-sm-8 col-12 w-100">
-                                <div class="ex_rightside">
-                                    <h4>Senior PHP <span data-hover="Developer"
-                                            class="data_hover c-cyan">Developer</span></h4>
-                                    <span class="data_hover c-cyan">Facebook</span>
-                                    <p class="ex_details">Sed ut unde omnis iste natus error sit totam rem aperiam
-                                        are many variations of done.</p>
-                                    <p class="more_content">Extra contant Sed ut perspiciatis unde omnis iste natus.
-                                    </p>
-                                    <a class="ex_btn">Read More</a>
-                                </div>
-                            </div>
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-12 padding-0 w-100">
-                                <div class="ex_leftside">
-                                    <h1>2012</h1>
-                                    <h4>Mar to Apr</h4>
-                                    <h1>2013</h1>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12">
-                    <div class="exprince_box ex_leftsidebox">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-12 padding-0 w-100">
-                                <div class="ex_leftside">
-                                    <h1>2010</h1>
-                                    <h4>Feb to Dec</h4>
-                                    <h1>2011</h1>
-                                </div>
-                            </div>
-                            <div class="col-lg-8 col-md-8 col-sm-8 col-12 w-100">
-                                <div class="ex_rightside">
-                                    <h4>Senior UI/UX <span data-hover="Designer"
-                                            class="data_hover c-yellow">Designer</span></h4>
-                                    <span class="c-yellow">Adobe</span>
-                                    <p class="ex_details">Sed ut unde omnis iste natus error sit totam rem aperiam
-                                        are many variations of done.</p>
-                                    <p class="more_content">Extra contant Sed ut perspiciatis unde omnis iste natus.
-                                    </p>
-                                    <a class="ex_btn">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6 col-md-12">
-                    <div class="exprince_box ex_leftsidebox">
-                        <div class="row">
-                            <div class="col-lg-4 col-md-4 col-sm-4 col-12 padding-0 w-100">
-                                <div class="ex_leftside">
-                                    <h1>2008</h1>
-                                    <h4>Feb to Dec</h4>
-                                    <h1>2009</h1>
-                                </div>
-                            </div>
-                            <div class="col-lg-8 col-md-8 col-sm-8 col-12 w-100">
-                                <div class="ex_rightside">
-                                    <h4>Senior UI/UX <span data-hover="Designer"
-                                            class="data_hover c-pink">Designer</span></h4>
-                                    <span class="c-pink">Adobe</span>
-                                    <p class="ex_details">Sed ut unde omnis iste natus error sit totam rem aperiam
-                                        are many variations of done.</p>
-                                    <p class="more_content">Extra contant Sed ut perspiciatis unde omnis iste natus.
-                                    </p>
-                                    <a class="ex_btn">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endif %}
+                {% endfor %}
             </div>
         </div>
     </div>
