@@ -140,6 +140,17 @@ import pudb; pu.db()
 ```
 
 
+### How to Black your python files
+Black can reformat your entire file in place according to the Black code style. It helps your brain focus on the problem you want to solve and code solutions, rather than getting distracted by code structure and minor stylistic differences.
+
+Black can be installed by running `pip install black`
+
+#### Change Number of Characters per Line
+
+Note that Black defaults to 88 characters for its line length, but you can change that using the “-l” or “- -line-length” option.
+
+For example, to change to 60 characters: `black -l 60 python_file.py`
+
 ### Install all the required libraries for dev environment
 
 Install all the base requirements and the extra dev requirements

@@ -7,9 +7,12 @@ from wagtail.core.blocks.list_block import ListBlock
 from wagtail.images.blocks import ImageChooserBlock
 from wagtail.snippets.blocks import SnippetChooserBlock
 from wagtail.documents.blocks import DocumentChooserBlock
+from django.core.exceptions import ValidationError
+from django.forms.utils import ErrorList
 
 from wagtailfontawesome.blocks import IconBlock
 from wagtailmarkdown.blocks import MarkdownBlock
+
 
 NEW_TABLE_OPTIONS = {
     "minSpareRows": 0,
@@ -43,18 +46,26 @@ NEW_TABLE_OPTIONS = {
 
 class AnyMarkDownBlock(blocks.StreamBlock):
     markdown = MarkdownBlock(
-        icon="code", help_text="Enter your details in markdown", required=False
+        icon="code",
+        help_text="Enter your details in markdown",
+        required=False,
     )
 
 
 class AnyIconBlock(blocks.StreamBlock):
-    icon = IconBlock(help_text="Enter your icon from fontawesome",)
+    icon = IconBlock(
+        help_text="Enter your icon from fontawesome",
+    )
 
 
 class TitleBlock(blocks.StructBlock):
 
-    sub_heading = blocks.CharBlock(required=True, help_text="Enter sub-heading")
-    heading = blocks.CharBlock(required=True, help_text="Enter heading")
+    sub_heading = blocks.CharBlock(
+        required=True, help_text="Enter sub-heading"
+    )
+    heading = blocks.CharBlock(
+        required=True, help_text="Enter heading"
+    )
 
     class Meta:
         template = "streams/title_block.html"
@@ -77,12 +88,50 @@ class LinkValue(blocks.StructValue):
 
 
 class Link(blocks.StructBlock):
-    link_text = blocks.CharBlock(max_length=50, default="More details")
+    link_text = blocks.CharBlock(
+        max_length=50, default="More details"
+    )
     internal_page = blocks.PageChooserBlock(required=False)
     external_link = blocks.URLBlock(required=False)
 
     class Meta:
         value_class = LinkValue
+
+    def clean(self, value):
+        internal_page = value.get("internal_page")
+        external_link = value.get("external_link")
+        errors = {}
+
+        if internal_page and external_link:
+            errors["internal_page"] = ErrorList(
+                [
+                    "Both of these fields cannot be filled. Please select or enter only one option."
+                ]
+            )
+            errors["external_link"] = ErrorList(
+                [
+                    "Both of these fields cannot be filled. Please select or enter only one option."
+                ]
+            )
+        elif not internal_page and not external_link:
+            errors["internal_page"] = ErrorList(
+                [
+                    "Please selcet a page r enter a URL for one of these options."
+                ]
+            )
+            errors["external_link"] = ErrorList(
+                [
+                    "Please selcet a page r enter a URL for one of these options."
+                ]
+            )
+
+        if errors:
+            raise ValidationError(
+                "Validation error in your link",
+                params=errors,
+            )
+
+        return super().clean(value)
 
 
 class AnyRichTextBlock(blocks.StructBlock):
@@ -108,17 +157,24 @@ class AnyRichTextBlock(blocks.StructBlock):
             "subscript",
             "strikethrough",
             "blockquote",
-        ]
+        ],
     )
 
 
 class Card(blocks.StructBlock):
-    title = blocks.CharBlock(max_length=100, help_text="Bold title text 100 max lenght")
+    title = blocks.CharBlock(
+        max_length=100,
+        help_text="Bold title text 100 max lenght",
+    )
     text = blocks.TextBlock(
-        max_length=255, help_text="Optional text of 255 characters", required=False
+        max_length=255,
+        help_text="Optional text of 255 characters",
+        required=False,
     )
     image = ImageChooserBlock(help_text="image cropped")
-    link = Link(help_text="Enter an external link or select an internal page")
+    link = Link(
+        help_text="Enter an external link or select an internal page"
+    )
 
 
 class CardsBlock(blocks.StructBlock):
@@ -135,17 +191,24 @@ class CardsBlock(blocks.StructBlock):
 class RadioSelectBlock(blocks.ChoiceBlock):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.field.widget = forms.RadioSelect(choices=self.field.widget.choices)
+        self.field.widget = forms.RadioSelect(
+            choices=self.field.widget.choices
+        )
 
 
 class ImageAndTestBlock(blocks.StructBlock):
     image = ImageChooserBlock()
     image_alignment = RadioSelectBlock(
-        choices=(("left", "image to the left"), ("right", "image to the right")),
+        choices=(
+            ("left", "image to the left"),
+            ("right", "image to the right"),
+        ),
         default="left",
         help_text="image with text",
     )
-    title = blocks.CharBlock(max_length=60, help_text="Max length 60 characters")
+    title = blocks.CharBlock(
+        max_length=60, help_text="Max length 60 characters"
+    )
     text = blocks.CharBlock(max_length=140, required=False)
     link = Link()
 
@@ -157,30 +220,39 @@ class ImageAndTestBlock(blocks.StructBlock):
 
 class AnyTableBlock(TableBlock):
     table = TableBlock(
-        table_options=NEW_TABLE_OPTIONS, help_text="Enter your details in this table"
+        table_options=NEW_TABLE_OPTIONS,
+        help_text="Enter your details in this table",
     )
 
 
 class AboutMeBlock(blocks.StructBlock):
     image_table = ImageChooserBlock(
-        help_text="Enter the image for the left table", label="Image Table"
+        help_text="Enter the image for the left table",
+        label="Image Table",
     )
     title_table = TitleBlock(
-        help_text="Enter heading and subheading of the table", label="Left Title Table"
+        help_text="Enter heading and subheading of the table",
+        label="Left Title Table",
     )
     table = AnyTableBlock()
     # markdown = AnyMarkDownBlock()
     title = TitleBlock(
-        help_text="Enter heading and subheading", label="Right Title RichText"
+        help_text="Enter heading and subheading",
+        label="Right Title RichText",
     )
     ricktext = AnyRichTextBlock()
     link_cv_document = DocumentChooserBlock()
     btn_download_text = TitleBlock(
-        help_text="Enter 2 texts for btn", label="First Button Text"
+        help_text="Enter 2 texts for btn",
+        label="First Button Text",
     )
-    hire_url = Link(help_text="Write the url to link to", label="Hire Button URL")
+    hire_url = Link(
+        help_text="Write the url to link to",
+        label="Hire Button URL",
+    )
     btn_hire_text = TitleBlock(
-        help_text="Enter 2 texts for btn", label="Second Button Text"
+        help_text="Enter 2 texts for btn",
+        label="Second Button Text",
     )
 
     class Meta:
@@ -189,7 +261,10 @@ class AboutMeBlock(blocks.StructBlock):
 
 class InfoBlock(blocks.StructBlock):
     block_alignment = RadioSelectBlock(
-        choices=(("left", "block to the left"), ("right", "block to the right")),
+        choices=(
+            ("left", "block to the left"),
+            ("right", "block to the right"),
+        ),
         default="left",
         help_text="Block Alignment",
     )
@@ -206,11 +281,22 @@ class InfoBlock(blocks.StructBlock):
 
 
 class EducationBlock(blocks.StructBlock):
-    info_block = InfoBlock(help_text="Enter block alignement and color")
-    number_block = blocks.CharBlock(max_length=60, help_text="Enter first, second, third or fourth")
-    edu_mainyear = blocks.CharBlock(max_length=60, help_text="Max length 60 characters")
-    state_title = blocks.CharBlock(max_length=60, help_text="Max length 60 characters")
-    number_title = blocks.CharBlock(max_length=60, help_text="Max length 60 characters")
+    info_block = InfoBlock(
+        help_text="Enter block alignement and color"
+    )
+    number_block = blocks.CharBlock(
+        max_length=60,
+        help_text="Enter first, second, third or fourth",
+    )
+    edu_mainyear = blocks.CharBlock(
+        max_length=60, help_text="Max length 60 characters"
+    )
+    state_title = blocks.CharBlock(
+        max_length=60, help_text="Max length 60 characters"
+    )
+    number_title = blocks.CharBlock(
+        max_length=60, help_text="Max length 60 characters"
+    )
     education_place_span = blocks.CharBlock(
         max_length=60, help_text="Max length 60 characters"
     )
@@ -221,7 +307,9 @@ class EducationBlock(blocks.StructBlock):
 
 
 class EducationsBlock(blocks.StructBlock):
-    title = TitleBlock(help_text="Enter heading and subheading")
+    title = TitleBlock(
+        help_text="Enter heading and subheading"
+    )
     education_block = blocks.ListBlock(EducationBlock)
 
     class Meta:
@@ -231,7 +319,9 @@ class EducationsBlock(blocks.StructBlock):
 
 
 class ProgressBarBlock(blocks.StructBlock):
-    progress_bar = blocks.ListBlock(TitleBlock(help_text="Enter percentage and title"))
+    progress_bar = blocks.ListBlock(
+        TitleBlock(help_text="Enter percentage and title")
+    )
 
     class Meta:
         template = "streams/progress_bars.html"
@@ -240,19 +330,39 @@ class ProgressBarBlock(blocks.StructBlock):
 
 
 class ExperienceBlock(blocks.StructBlock):
-    info_block = InfoBlock(help_text="Enter block alignement and color")
-    ex_leftside_h1_up = blocks.CharBlock(max_length=60, help_text="Max length 60 characters")
-    ex_leftside_h4 = blocks.CharBlock(max_length=60, help_text="Max length 60 characters")
-    ex_leftside_h1_down = blocks.CharBlock(max_length=60, help_text="Max length 60 characters")
-    ex_rightside_h4 = blocks.CharBlock(max_length=60, help_text="Max length 60 characters")
-    ex_rightside_span = blocks.CharBlock(max_length=60, help_text="Max length 60 characters")
-    company_span = blocks.CharBlock(max_length=60, help_text="Max length 60 characters")
-    ex_details_p = blocks.CharBlock(max_length=255, help_text="Max length 60 characters")
-    more_content_p = blocks.CharBlock(max_length=255, help_text="Max length 60 characters")
+    info_block = InfoBlock(
+        help_text="Enter block alignement and color"
+    )
+    ex_leftside_h1_up = blocks.CharBlock(
+        max_length=60, help_text="Max length 60 characters"
+    )
+    ex_leftside_h4 = blocks.CharBlock(
+        max_length=60, help_text="Max length 60 characters"
+    )
+    ex_leftside_h1_down = blocks.CharBlock(
+        max_length=60, help_text="Max length 60 characters"
+    )
+    ex_rightside_h4 = blocks.CharBlock(
+        max_length=60, help_text="Max length 60 characters"
+    )
+    ex_rightside_span = blocks.CharBlock(
+        max_length=60, help_text="Max length 60 characters"
+    )
+    company_span = blocks.CharBlock(
+        max_length=60, help_text="Max length 60 characters"
+    )
+    ex_details_p = blocks.CharBlock(
+        max_length=255, help_text="Max length 60 characters"
+    )
+    more_content_p = blocks.CharBlock(
+        max_length=255, help_text="Max length 60 characters"
+    )
 
 
 class ExperiencesBlock(blocks.StructBlock):
-    title = TitleBlock(help_text="Enter heading and subheading")
+    title = TitleBlock(
+        help_text="Enter heading and subheading"
+    )
     experience_block = blocks.ListBlock(ExperienceBlock)
 
     class Meta:
@@ -263,14 +373,19 @@ class ExperiencesBlock(blocks.StructBlock):
 
 class ServiceBlock(blocks.StructBlock):
     image_service = ImageChooserBlock(
-        help_text="Enter the image for the service", label="Image Service"
+        help_text="Enter the image for the service",
+        label="Image Service",
     )
-    service_title = blocks.CharBlock(max_length=60, help_text="Max length 60 characters")
+    service_title = blocks.CharBlock(
+        max_length=60, help_text="Max length 60 characters"
+    )
     service_richtext = AnyRichTextBlock()
 
 
 class ServicesBlock(blocks.StructBlock):
-    title = TitleBlock(help_text="Enter heading and subheading")
+    title = TitleBlock(
+        help_text="Enter heading and subheading"
+    )
     services = blocks.ListBlock(ServiceBlock)
 
     class Meta:
@@ -280,18 +395,44 @@ class ServicesBlock(blocks.StructBlock):
 
 
 class MyProjectBlock(blocks.StructBlock):
-    data_filter_classname_01 = blocks.CharBlock(max_length=60, help_text="Max length 60 characters")
-    data_filter_classname_02 = blocks.CharBlock(max_length=60, help_text="Max length 60 characters", required=False)
+    data_filter_classname_01 = blocks.CharBlock(
+        max_length=60, help_text="Max length 60 characters"
+    )
+    data_filter_classname_02 = blocks.CharBlock(
+        max_length=60,
+        help_text="Max length 60 characters",
+        required=False,
+    )
     image = ImageChooserBlock()
-    grid_content_h3 = blocks.CharBlock(max_length=60, help_text="Max length 60 characters")
-    
+    grid_content_h3 = blocks.CharBlock(
+        max_length=60, help_text="Max length 60 characters"
+    )
+
 
 class MyProjectsBlock(blocks.StructBlock):
-    title = TitleBlock(help_text="Enter heading and subheading")
-    data_filter_01 = blocks.CharBlock(max_length=60, help_text="Max length 60 characters", required=False)
-    data_filter_02 = blocks.CharBlock(max_length=60, help_text="Max length 60 characters", required=False)
-    data_filter_03 = blocks.CharBlock(max_length=60, help_text="Max length 60 characters", required=False)
-    data_filter_04 = blocks.CharBlock(max_length=60, help_text="Max length 60 characters", required=False)
+    title = TitleBlock(
+        help_text="Enter heading and subheading"
+    )
+    data_filter_01 = blocks.CharBlock(
+        max_length=60,
+        help_text="Max length 60 characters",
+        required=False,
+    )
+    data_filter_02 = blocks.CharBlock(
+        max_length=60,
+        help_text="Max length 60 characters",
+        required=False,
+    )
+    data_filter_03 = blocks.CharBlock(
+        max_length=60,
+        help_text="Max length 60 characters",
+        required=False,
+    )
+    data_filter_04 = blocks.CharBlock(
+        max_length=60,
+        help_text="Max length 60 characters",
+        required=False,
+    )
     my_project_block = blocks.ListBlock(MyProjectBlock)
 
     class Meta:
@@ -301,11 +442,15 @@ class MyProjectsBlock(blocks.StructBlock):
 
 
 class TestimonialBlock(blocks.StructBlock):
-    testimonial_snippet = SnippetChooserBlock(target_model="testimonials.Testimonial")
+    testimonial_snippet = SnippetChooserBlock(
+        target_model="testimonials.Testimonial"
+    )
 
 
 class TestimonialsBlock(blocks.StructBlock):
-    title = TitleBlock(help_text="Enter heading and subheading")
+    title = TitleBlock(
+        help_text="Enter heading and subheading"
+    )
     testimonials = blocks.ListBlock(TestimonialBlock)
 
     class Meta:
