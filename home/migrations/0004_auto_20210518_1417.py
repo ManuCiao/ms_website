@@ -7,7 +7,6 @@ import django.db.models.deletion
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('wagtailcore', '0062_comment_models_and_pagesubscription'),
         ('wagtailimages', '0023_add_choose_permissions'),
         ('home', '0003_auto_20210518_1402'),
     ]

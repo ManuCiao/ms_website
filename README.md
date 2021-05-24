@@ -113,6 +113,18 @@ Ensure you can connect to your postgresql database then migrate:
     python3 manage.py migrate --run-syncdb
 
 
+#### Dump Postgres database
+
+```sh
+pg_dump --host localhost --dbname msdb --file msdb.dump --format=custom --username postgres
+```
+
+#### Restore Postgres database
+
+```sh
+pg_restore --verbose --clean --no-acl --no-owner --host localhost --dbname  msdb -U postgres msdb.dump
+```
+
 ### Create new app within the project
 
 ```py

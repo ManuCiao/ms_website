@@ -2,6 +2,7 @@ wbmanu
 static_root
 manuciaocv/settings/local.py
 datadump.json
+msdb.dump
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/django,python,node,sass

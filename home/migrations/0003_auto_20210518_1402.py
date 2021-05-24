@@ -8,7 +8,6 @@ class Migration(migrations.Migration):
 
     dependencies = [
         ('wagtailimages', '0023_add_choose_permissions'),
-        ('wagtailcore', '0062_comment_models_and_pagesubscription'),
         ('home', '0002_create_homepage'),
     ]
 
