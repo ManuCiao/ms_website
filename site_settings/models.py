@@ -1,17 +1,30 @@
 from django.db import models
 from wagtail.admin.edit_handlers import FieldPanel
-from wagtail.contrib.settings.models import BaseSetting, register_setting
+from wagtail.contrib.settings.models import (
+    BaseSetting,
+    register_setting,
+)
 from wagtail.core.fields import RichTextField
 
 
 @register_setting
 class SocialMediaSettings(BaseSetting):
 
-    github = models.URLField(blank=True, help_text="Enter your Github URL")
-    twitter = models.URLField(blank=True, help_text="Enter your Twitter URL")
-    linkedin = models.URLField(blank=True, help_text="Enter your Linkedin URL")
-    medium = models.URLField(blank=True, help_text="Enter your Medium URL")
-    figma = models.URLField(blank=True, help_text="Enter your Figma URL")
+    github = models.URLField(
+        blank=True, help_text="Enter your Github URL"
+    )
+    twitter = models.URLField(
+        blank=True, help_text="Enter your Twitter URL"
+    )
+    linkedin = models.URLField(
+        blank=True, help_text="Enter your Linkedin URL"
+    )
+    medium = models.URLField(
+        blank=True, help_text="Enter your Medium URL"
+    )
+    figma = models.URLField(
+        blank=True, help_text="Enter your Figma URL"
+    )
 
     panels = [
         FieldPanel("github"),
@@ -48,4 +61,3 @@ class ContactSettings(BaseSetting):
         FieldPanel("phone"),
         FieldPanel("email"),
     ]
-

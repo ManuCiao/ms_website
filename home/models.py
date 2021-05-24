@@ -12,6 +12,15 @@ from wagtail.images.edit_handlers import ImageChooserPanel
 
 from streams import blocks
 
+from wagtailstreamforms.blocks import WagtailFormBlock
+from wagtailstreamforms.models.abstract import (
+    AbstractFormSetting,
+)
+
+
+class AdvancedFormSetting(AbstractFormSetting):
+    to_address = models.EmailField()
+
 
 class HomePage(Page):
     parent_page_types = ["wagtailcore.Page"]
@@ -124,6 +133,7 @@ class HomePage(Page):
             ("services", blocks.ServicesBlock()),
             ("my_projects", blocks.MyProjectsBlock()),
             ("testimonial", blocks.TestimonialsBlock()),
+            ("form", WagtailFormBlock()),
         ],
         null=True,
         blank=True,

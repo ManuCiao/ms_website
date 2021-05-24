@@ -455,11 +455,3 @@ class TestimonialsBlock(blocks.StructBlock):
 
     class Meta:
         template = "streams/testimonial_block.html"
-
-
-## get in touch block
-# port_sub_heading text
-# port_heading text
-# port_head_wrapper text
-
-### create forms app for the contact form ###

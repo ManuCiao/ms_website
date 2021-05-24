@@ -125,6 +125,22 @@ pg_dump --host localhost --dbname msdb --file msdb.dump --format=custom --userna
 pg_restore --verbose --clean --no-acl --no-owner --host localhost --dbname  msdb -U postgres msdb.dump
 ```
 
+#### Squash migrations
+
+```py
+./manage.py squashmigrations home 0003 0025
+./manage.py squashmigrations flex 0003 0009
+```
+
+#### How to migrate by app
+
+```py
+python manage.py migrate home
+python manage.py migrate flex
+python manage.py migrate site_settings
+python manage.py migrate
+```
+
 ### Create new app within the project
 
 ```py
@@ -168,6 +184,11 @@ For example, to change to 60 characters: `black -l 60 python_file.py`
 Install all the base requirements and the extra dev requirements
 
     pip install -r dev.txt
+
+
+### Where to get wagtail icons
+
+[A List of Wagtail StreamField Icons](https://thegrouchy.dev/general/2015/12/06/wagtail-streamfield-icons.html)
 
 ref:
 

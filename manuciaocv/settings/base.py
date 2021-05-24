@@ -54,6 +54,7 @@ INSTALLED_APPS = [
     'taggit',
     'wagtailmarkdown',
     'wagtailfontawesome',
+    'wagtailstreamforms',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -61,6 +62,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'widget_tweaks',
 ]
 
 
@@ -175,6 +178,22 @@ WAGTAIL_SITE_NAME = "manuciaocv"
 WAGTAILEMBEDS_RESPONSIVE_HTML = True
 WAGTAILMARKDOWN_AUTODOWNLOAD_FONTAWESOME = False
 
+# Forms
+# the label of the forms area in the admin sidebar
+WAGTAILSTREAMFORMS_ADMIN_MENU_LABEL = 'Streamforms'
+WAGTAILSTREAMFORMS_ADMIN_MENU_ICON = 'forms'
+
+# the order of the forms area in the admin sidebar
+WAGTAILSTREAMFORMS_ADMIN_MENU_ORDER = None
+
+WAGTAILSTREAMFORMS_ADVANCED_SETTINGS_MODEL = 'home.AdvancedFormSetting'
+
+# the default form template choices
+WAGTAILSTREAMFORMS_FORM_TEMPLATES = (
+    ('streamforms/form_block.html', ("Default Form Template")),  # default
+    ('streams/custom_form.html', ("Custom Form Template")),
+)
+
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://example.com'
+BASE_URL = 'http://localhost:8000'

@@ -1,0 +1,21 @@
+{% load widget_tweaks %}
+
+{{ field.label_tag }}
+
+{% if form.is_bound %}
+    {% if field.errors or form.non_field_errors %}
+        {% render_field field class="form-control is-invalid" %}
+        <div class="invalid-feedback">
+            {{ form.non_field_errors }}
+            {{ field.errors }}
+        </div>
+    {% else %}
+        {% render_field field class="form-control is-valid" %}
+    {% endif %}
+{% else %}
+    {% with "form-control input-field-"|add:field.name as field_class %}{% render_field field class=field_class %}{% endwith %}
+{% endif %}
+
+{% if field.help_text %}
+    <small class="form-text text-muted">{{ field.help_text }}</small>
+{% endif %}
