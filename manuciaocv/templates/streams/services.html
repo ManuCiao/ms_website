@@ -1,0 +1,34 @@
+{% load static wagtailimages_tags wagtailcore_tags %}
+
+<div class="port_services_sections prt_toppadder80">
+    <!-- start services section  -->
+    <div class="services_section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="port_heading_wrapper text-center prt_bottompadder40">
+                        <div class="port_sub_heading_wrapper">
+                            <h2 class="port_sub_heading">{{ value.title.sub_heading }} </h2>
+                        </div>
+                        <h1 class="port_heading">{{ value.title.heading }}</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                {% for block in value.services %}
+                <div class="col-lg-4 col-md-6 text-center">
+                    <div class="port_services_box_wrapper">
+                        <div class="port_services_box">
+                            {% image block.image_service fill-80x80 as sv_img %}
+                            <img src="{{ sv_img.url }}" alt="{{ sv_img.alt }}">
+                            <h2 class="project_heading">{{ block.service_title }}</h2>
+                            <p class="project_pera">{{ block.service_richtext.context|richtext }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div><!-- End Experience section  -->
