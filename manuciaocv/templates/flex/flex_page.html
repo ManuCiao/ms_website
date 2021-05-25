@@ -1,15 +1,24 @@
 {% extends "base.html" %}
-{% load wagtailcore_tags %}
+{% load static wagtailimages_tags wagtailcore_tags cache %}
 
 <!-- ================== start inner section ================== -->
 
 <div class="port_sec_warapper">
     
     {% block content %}
-    <h1>{{ page.title }}</h1>
+    {% if not request.is_preview %}
+        {# LIVE #}
+        {% cache 2592000 flex_page_streams page.id %}
+            {% for block in page.body %}
+                {% include_block block %}
+            {% endfor %}
+        {% endcache %}
+    {% else %}
+        {# PREVIEW #}
         {% for block in page.body %}
             {% include_block block %}
         {% endfor %}
+    {% endif %}
     {% endblock content %}
 
 </div>

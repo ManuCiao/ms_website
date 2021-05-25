@@ -16,6 +16,8 @@ from wagtailstreamforms.blocks import WagtailFormBlock
 from wagtailstreamforms.models.abstract import (
     AbstractFormSetting,
 )
+from django.core.cache import cache
+from django.core.cache.utils import make_template_fragment_key
 
 
 class AdvancedFormSetting(AbstractFormSetting):
@@ -158,3 +160,12 @@ class HomePage(Page):
         ImageChooserPanel("banner_personal_image"),
         StreamFieldPanel("body"),
     ]
+
+    def save(self, *args, **kwargs):
+        key = make_template_fragment_key(
+            "home_page_streams",
+            [self.id],
+        )
+        cache.delete(key)
+
+        return super().save(*args, **kwargs)

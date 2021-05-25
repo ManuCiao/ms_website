@@ -6,6 +6,9 @@ from wagtail.snippets.blocks import SnippetChooserBlock
 from wagtail.core.blocks import RichTextBlock
 from streams import blocks
 
+from django.core.cache import cache
+from django.core.cache.utils import make_template_fragment_key
+
 
 class FlexPage(Page):
     parent_page_types = ["home.HomePage", "flex.FlexPage"]
@@ -40,3 +43,13 @@ class FlexPage(Page):
     class Meta:
         verbose_name = "Flex (misc) page"
         verbose_name_plural = "Flex (misc) pages"
+
+
+    def save(self, *args, **kwargs):
+        key = make_template_fragment_key(
+            "flex_page_streams",
+            [self.id],
+        )
+        cache.delete(key)
+
+        return super().save(*args, **kwargs)
