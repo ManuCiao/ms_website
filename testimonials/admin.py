@@ -14,3 +14,6 @@ class TestimonialAdmin(ModelAdmin):
     exclude_from_explorer = False
     list_display = ("image","quote", "testimonial_name", "testimonial_profession")
     search_fields = ("quote", "testimonial_name", "testimonial_profession")
+
+
+    

@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'streams',
     'testimonials',
     'site_settings',
+    'menus',
 
     'wagtail.contrib.forms',
     'wagtail.contrib.redirects',
@@ -55,6 +56,7 @@ INSTALLED_APPS = [
     'wagtailmarkdown',
     'wagtailfontawesome',
     'wagtailstreamforms',
+    'django_extensions',
 
     'django.contrib.admin',
     'django.contrib.auth',
