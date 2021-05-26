@@ -1,4 +1,4 @@
-{% load static menu_tags %}
+{% load static menu_tags cache %}
 
 {% get_menu "sidebar" as navigation %}
 
@@ -14,11 +14,12 @@
     <div class="port_sidebar_nav">
         <div class="port_navigation index_navigation">
             <ul class="nav_list">
+                {% cache 2592000 sidebar_menu %}
                 {% for item in navigation.menu_items.all %}
-                             
                 <li data-number="{{ forloop.counter0 }}">
                     <div class="tooltip_box">
-                        <a href="javascript:;" class="siderbar_menuicon" {% if item.open_in_new_tab %}target="_blank"{% endif %}>
+                        <a href="javascript:;" class="siderbar_menuicon" {% if item.open_in_new_tab %}target="_blank"
+                            {% endif %}>
                             <span class="first_micon">
                                 <img src="{{ item.svg.url }}" width="30px" height="30px">
                             </span>
@@ -29,8 +30,8 @@
                         <span class="menu_tooltip">{{ item.title }}</span>
                     </div>
                 </li>
-
                 {% endfor %}
+                {% endcache %}
             </ul>
         </div>
     </div>
@@ -40,6 +41,7 @@
                 <p>Follow Me</p>
             </div>
             <ul class="social_list">
+                {% cache 2592000 social_media_settings %}
                 {% if settings.site_settings.SocialMediaSettings.github %}
                 <li>
                     <a href="{{ settings.site_settings.SocialMediaSettings.github }}" class="siderbar_icon">
@@ -88,6 +90,7 @@
                     </a>
                 </li>
                 {% endif %}
+                {% endcache %}
             </ul>
         </div>
     </div>

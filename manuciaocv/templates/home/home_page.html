@@ -96,7 +96,7 @@
 
 <div class="port_sec_warapper">
     
-    {% comment %} {% block content %}
+    {% block content %}
     {% if not request.is_preview %}
         {# LIVE #}
         {% cache 2592000 home_page_streams page.id %}
@@ -110,12 +110,6 @@
             {% include_block block %}
         {% endfor %}
     {% endif %}
-    {% endblock content %} {% endcomment %}
-
-    {% block content %}
-    {% for block in page.body %}
-            {% include_block block %}
-        {% endfor %}
     {% endblock content %}
 
 </div>

@@ -161,11 +161,11 @@ class HomePage(Page):
         StreamFieldPanel("body"),
     ]
 
-    # def save(self, *args, **kwargs):
-    #     key = make_template_fragment_key(
-    #         "home_page_streams",
-    #         [self.id],
-    #     )
-    #     cache.delete(key)
+    def save(self, *args, **kwargs):
+        key = make_template_fragment_key(
+            "home_page_streams",
+            [self.id],
+        )
+        cache.delete(key)
 
-    #     return super().save(*args, **kwargs)
+        return super().save(*args, **kwargs)

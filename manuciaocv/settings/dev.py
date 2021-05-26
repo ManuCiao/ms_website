@@ -27,15 +27,17 @@ INTERNAL_IPS = [
     '127.0.0.1',
 ]
 
-cwd = os.getcwd()
 
-CACHES = {
-    "default": {
-        "BACKEND":
-        "django.core.cache.backends.filebased.FileBasedCache",
-        "LOCATION": f"{cwd}/.cache"
-    }
-}
+## Disable the cache if on develop it slows down the updates, enable it only on production
+# cwd = os.getcwd()
+
+# CACHES = {
+#     "default": {
+#         "BACKEND":
+#         "django.core.cache.backends.filebased.FileBasedCache",
+#         "LOCATION": f"{cwd}/.cache"
+#     }
+# }
 
 try:
     from .local import *

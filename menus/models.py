@@ -13,6 +13,9 @@ from wagtail.documents.edit_handlers import DocumentChooserPanel
 from wagtail.core.models import Orderable
 from modelcluster.fields import ParentalKey
 
+from django.core.cache import cache
+from django.core.cache.utils import make_template_fragment_key
+
 
 class MenuItem(Orderable):
     link_title = models.CharField(
@@ -31,8 +34,8 @@ class MenuItem(Orderable):
     )
     svg = models.ForeignKey(
         'wagtaildocs.Document',
-        blank=True, # or False 
-        null=True, # or False 
+        blank=True,
+        null=True, 
         related_name='+',
         on_delete=models.SET_NULL, # Only works with null=True
     )
@@ -79,3 +82,11 @@ class Menu(ClusterableModel):
 
     def __str__(self):
         return self.title
+
+    def save(self, **kwargs):
+        key = make_template_fragment_key(
+            "sidebar_menu"
+        )
+        cache.delete(key)
+
+        return super().save(**kwargs)

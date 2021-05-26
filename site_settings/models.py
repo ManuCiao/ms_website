@@ -6,6 +6,8 @@ from wagtail.contrib.settings.models import (
 )
 from wagtail.core.fields import RichTextField
 
+from django.core.cache import cache
+from django.core.cache.utils import make_template_fragment_key
 
 @register_setting
 class SocialMediaSettings(BaseSetting):
@@ -34,6 +36,14 @@ class SocialMediaSettings(BaseSetting):
         FieldPanel("figma"),
     ]
 
+    def save(self, *args, **kwargs):
+        key = make_template_fragment_key(
+            "social_media_settings"
+        )
+        cache.delete(key)
+
+        return super().save(*args, **kwargs)
+
 
 @register_setting
 class ContactSettings(BaseSetting):
@@ -61,3 +71,11 @@ class ContactSettings(BaseSetting):
         FieldPanel("phone"),
         FieldPanel("email"),
     ]
+
+    def save(self, *args, **kwargs):
+        key = make_template_fragment_key(
+            "footer_contact_settings"
+        )
+        cache.delete(key)
+
+        return super().save(*args, **kwargs)
