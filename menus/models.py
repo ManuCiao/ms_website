@@ -1,7 +1,7 @@
 from django.db import models
 from django.db.models.deletion import CASCADE
 from django.db.models.expressions import F
-from django.utils.html import TRAILING_PUNCTUATION_CHARS
+from django.utils.html import TRAILING_PUNCTUATION_CHARS, urlize
 from modelcluster.models import ClusterableModel
 from django_extensions.db.fields import AutoSlugField
 from wagtail.admin.edit_handlers import (
@@ -9,6 +9,7 @@ from wagtail.admin.edit_handlers import (
     InlinePanel,
     PageChooserPanel,
 )
+from wagtail.documents.edit_handlers import DocumentChooserPanel 
 from wagtail.core.models import Orderable
 from modelcluster.fields import ParentalKey
 
@@ -28,16 +29,40 @@ class MenuItem(Orderable):
     open_in_new_tab = models.BooleanField(
         default=False, blank=True
     )
+    svg = models.ForeignKey(
+        'wagtaildocs.Document',
+        blank=True, # or False 
+        null=True, # or False 
+        related_name='+',
+        on_delete=models.SET_NULL, # Only works with null=True
+    )
+
 
     panels = [
         FieldPanel("link_title"),
         FieldPanel("link_url"),
         PageChooserPanel("link_page"),
         FieldPanel("open_in_new_tab"),
+        DocumentChooserPanel("svg"),
     ]
 
     page = ParentalKey("Menu", related_name="menu_items")
 
+    @property
+    def link(self):
+        if self.link_page:
+            return self.link_page.url
+        elif self.link_url:
+            return self.link_url
+        return '#'
+
+    @property
+    def title(self):
+        if self.link_page and not self.link_title:
+            return self.link_page.title
+        elif self.link_title:
+            return self.link_title
+        return 'Missing Title'
 
 class Menu(ClusterableModel):
     title = models.CharField(max_length=100)
