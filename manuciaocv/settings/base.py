@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'wagtail.contrib.modeladmin',
     'wagtail.contrib.settings',
     'wagtail.contrib.table_block',
+    'wagtail.contrib.sitemaps',
     'wagtail.embeds',
     'wagtail.sites',
     'wagtail.users',
@@ -56,7 +57,6 @@ INSTALLED_APPS = [
     'wagtailmarkdown',
     'wagtailfontawesome',
     'wagtailstreamforms',
-    'django_extensions',
 
     'django.contrib.admin',
     'django.contrib.auth',
@@ -64,8 +64,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sitemaps',
 
     'widget_tweaks',
+    'django_extensions',
 ]
 
 
