@@ -8,7 +8,7 @@ DEBUG = False
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-ALLOWED_HOSTS = ['localhost', 'mn-sabatino.com', '159.65.89.185']
+ALLOWED_HOSTS = ['localhost', 'mn-sabatino.com']
 
 cwd = os.getcwd()
 
