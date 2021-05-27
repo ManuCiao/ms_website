@@ -109,6 +109,10 @@ TEMPLATES = [
 WSGI_APPLICATION = 'manuciaocv.wsgi.application'
 
 
+# Database
+# https://docs.djangoproject.com/en/1.10/ref/settings/#databases
+
+
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -184,4 +188,5 @@ WAGTAILSTREAMFORMS_FORM_TEMPLATES = (
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://example.com'
+# BASE_URL required for notification emails
+BASE_URL = 'http://localhost:8000'

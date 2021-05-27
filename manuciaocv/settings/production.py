@@ -1,11 +1,18 @@
 import os
 from .base import *
+from os.path import join, dirname
+from dotenv import load_dotenv
+from pathlib import Path
+
 
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
-DEBUG = False
+load_dotenv()
+env_path = Path('.')/'.env'
+load_dotenv(dotenv_path=env_path)
 
+DEBUG = False
 SECRET_KEY = os.getenv('SECRET_KEY')
 
 ALLOWED_HOSTS = ['localhost', 'mn-sabatino.com']
@@ -37,13 +44,15 @@ CACHES = {
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.getenv('POSTGRES_NAME', 'msdb'),
-        'USER': os.getenv('POSTGRES_USER', 'manuciao'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD', 's@xlTI!I8^ke'),
-        'HOST': os.getenv('POSTGRES_SERVICE_HOST', 'localhost'),
-        'PORT': os.getenv('POSTGRES_PORT', '5432'),
+        'NAME': os.getenv('POSTGRES_NAME', ''),
+        'USER': os.getenv('POSTGRES_USER', ''),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', ''),
+        'HOST': os.getenv('POSTGRES_SERVICE_HOST', ''),
     }
 }
+
+db_from_env = dj_database_url.config()
+DATABASES['default'].update(db_from_env)
 
 # SECURE_SSL_REDIRECT = True
 

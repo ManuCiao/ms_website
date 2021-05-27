@@ -329,6 +329,8 @@ rsync '/home/dev01/Downloads/Personal/website/theme_portfolio_cv/ms_website/msdb
 rsync '/home/dev01/Downloads/Personal/website/theme_portfolio_cv/ms_website/.env' manuciao@159.65.89.185:/home/manuciao/ms_website
 rsync -a '/home/dev01/Downloads/Personal/website/theme_portfolio_cv/ms_website/media' manuciao@159.65.89.185:/home/manuciao/ms_website
 
+rsync '/home/dev01/Downloads/Personal/website/theme_portfolio_cv/ms_website/manuciaocv/settings/local.py' manuciao@159.65.89.185:/home/manuciao/ms_website/manuciaocv/settings/
+
 # restore db from pg_dump
 pg_restore --verbose --clean --no-acl --no-owner --host localhost --dbname  msdb -U manuciao msdb.dump
 
