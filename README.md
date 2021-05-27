@@ -256,16 +256,10 @@ sudo -u postgres psql
 
 # Create a new database
 create database msdb;
-
-# Create a new postres user with a password
-CREATE USER manuciao WITH PASSWORD 'your_db_password';
-
-# Alter the postgres role
+CREATE USER manuciao WITH PASSWORD 's@xlTI!I8^ke';
 ALTER ROLE manuciao SET client_encoding TO 'utf8';
 ALTER ROLE manuciao SET default_transaction_isolation TO 'read committed';
 ALTER ROLE manuciao SET timezone TO 'UTC';
-
-# Make the postgres user an admin
 GRANT ALL PRIVILEGES ON DATABASE msdb TO manuciao;
 ```
 
@@ -421,6 +415,18 @@ sudo nano /etc/nginx/sites-available/yourprojectname Replace 167.172.xxx.xx with
 sudo nginx -t
 # Restart nginx with
 sudo systemctl restart nginx 
+sudo systemctl restart gunicorn
+sudo systemctl restart postgresql
+
+# kill all postgres connection if it is stuck
+SELECT
+	pg_terminate_backend(pg_stat_activity.pid)
+FROM
+	pg_stat_activity
+WHERE
+	pg_stat_activity.datname = 'msdb'
+	AND pid <> pg_backend_pid();
+
 
 ```
 
