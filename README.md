@@ -287,6 +287,9 @@ mkdir ~/ms-website && cd ~/ms-website
 git clone https://github.com/ManuCiao/ms_website.git .
 ```
 
+- Run the following commands:
+
+```sh
 sudo apt install python3.9-venv
 python3 -m venv wbmanu
 source wbmanu/bin/activate
@@ -294,6 +297,23 @@ pip freeze
 pip install gunicorn psycopg2-binary
 pip install -r requirements.txt
 python manage.py collectstatic --settings=manuciaocv.settings.production
+export DJANGO_SETTINGS_MODULE='manuciaocv.settings.production'
+echo $DJANGO_SETTINGS_MODULE
+python manage.py runserver 0.0.0.0:8000
+python manage.py migrate home
+python manage.py migrate flex
+python manage.py migrate
+python manage.py createsuperuser
+sudo ufw allow 8000
+sudo ufw status
+python manage.py runserver 0.0.0.0:8000
+
+# go to your browser using your IP address from Digital Ocean:
+http://159.65.89.185:8000/
+
+# to transfer the db dump from your local machine to remote machine
+rsync /path/to/local/file username@PCB:/path/to/remote/destination
+```
 
 - Follow this [tutorial](https://learnwagtail.com/launch-your-wagtail-website-digital-ocean-ubuntu-18/)
 
