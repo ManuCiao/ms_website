@@ -169,7 +169,7 @@ STATICFILES_DIRS = [
 # See https://docs.djangoproject.com/en/3.1/ref/contrib/staticfiles/#manifeststaticfilesstorage
 STATICFILES_STORAGE = 'django.contrib.staticfiles.storage.ManifestStaticFilesStorage'
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'static_root')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -178,7 +178,7 @@ MEDIA_URL = '/media/'
 
 # Wagtail settings
 
-WAGTAIL_SITE_NAME = "manuciaocv"
+WAGTAIL_SITE_NAME = "mn-sabatino"
 WAGTAILEMBEDS_RESPONSIVE_HTML = True
 WAGTAILMARKDOWN_AUTODOWNLOAD_FONTAWESOME = False
 
@@ -200,4 +200,4 @@ WAGTAILSTREAMFORMS_FORM_TEMPLATES = (
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://localhost:8000'
+BASE_URL = 'http://mn-sabatino.com'

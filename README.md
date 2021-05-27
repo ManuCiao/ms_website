@@ -278,7 +278,7 @@ sudo -H pip3 install --upgrade pip && sudo -H pip3 install virtualenv
 - Create a new project directory
 
 ```sh
-mkdir ~/ms-website && cd ~/ms-website
+mkdir ~/ms_website && cd ~/ms_website
 ```
 
 - Clone your project from github into this directory (Add the "." at the ed it will add all the files in that folder)
@@ -318,8 +318,8 @@ http://159.65.89.185:8000/
 
 # to transfer the db dump from your local machine to remote machine
 rsync /path/to/local/file username@PCB:/path/to/remote/destination
-rsync '/home/dev01/Downloads/Personal/website/theme_portfolio_cv/ms_website/msdb.dump' manuciao@159.65.89.185:/home/manuciao/ms-website
-rsync -a '/home/dev01/Downloads/Personal/website/theme_portfolio_cv/ms_website/media' manuciao@159.65.89.185:/home/manuciao/ms-website
+rsync '/home/dev01/Downloads/Personal/website/theme_portfolio_cv/ms_website/msdb.dump' manuciao@159.65.89.185:/home/manuciao/ms_website
+rsync -a '/home/dev01/Downloads/Personal/website/theme_portfolio_cv/ms_website/media' manuciao@159.65.89.185:/home/manuciao/ms_website
 
 # restore db from pg_dump
 pg_restore --verbose --clean --no-acl --no-owner --host localhost --dbname  msdb -U manuciao msdb.dump
@@ -352,8 +352,8 @@ After=network.target
 [Service]
 User=manuciao
 Group=www-data
-WorkingDirectory=/home/manuciao/ms-website
-ExecStart=/home/manuciao/ms-website/wbmanu/bin/gunicorn \
+WorkingDirectory=/home/manuciao/ms_website
+ExecStart=/home/manuciao/ms_website/wbmanu/bin/gunicorn \
         --access-logfile - \
         --workers 3 \
         --bind unix:/run/gunicorn.sock \
@@ -377,7 +377,7 @@ curl --unix-socket /run/gunicorn.sock localhost
 sudo systemctl daemon-reload && sudo systemctl restart gunicorn
 
 # Create a new server block in nginx
-sudo nano /etc/nginx/sites-available/ms-website And add this:
+sudo nano /etc/nginx/sites-available/ms_website And add this:
 
 server {
     listen      80;
@@ -385,14 +385,14 @@ server {
     server_name 159.65.89.185 mn-sabatino.com;
     charset     UTF-8;
 
-    error_log   /home/manuciao/ms-website/nginx-error.log;
+    error_log   /home/manuciao/ms_website/nginx-error.log;
     location = /favicon.ico { access_log off; log_not_found off; }
     location /static/ {
-        alias /home/manuciao/ms-website/static/;
+        alias /home/manuciao/ms_website/static/;
     }
 
     location /media/ {
-        alias /home/manuciao/ms-website/media/;
+        alias /home/manuciao/ms_website/media/;
     }
 
     location / {
@@ -403,7 +403,7 @@ server {
 
 
 # Create a file by linking it to the sites-enabled directory
-sudo ln -s /etc/nginx/sites-available/ms-website /etc/nginx/sites-enabled
+sudo ln -s /etc/nginx/sites-available/ms_website /etc/nginx/sites-enabled
 # Test nginx with:
 sudo nginx -t
 # If there were no errors, restart nginx
