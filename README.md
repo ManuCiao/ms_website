@@ -290,8 +290,10 @@ git clone https://github.com/ManuCiao/ms_website.git .
 sudo apt install python3.9-venv
 python3 -m venv wbmanu
 source wbmanu/bin/activate
+pip freeze
 pip install gunicorn psycopg2-binary
 pip install -r requirements.txt
+python manage.py collectstatic --settings=manuciaocv.settings.production
 
 - Follow this [tutorial](https://learnwagtail.com/launch-your-wagtail-website-digital-ocean-ubuntu-18/)
 
