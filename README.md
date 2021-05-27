@@ -199,6 +199,19 @@ pip install -r dev.txt
 
 [How To Harden the Security of Your Production Django Project](https://www.digitalocean.com/community/tutorials/how-to-harden-your-production-django-project)
 
+## If .gitignore does not remove files/folder
+
+The `.gitignore` file ensures that files not tracked by Git remain untracked.
+
+Just adding folders/files to a `.gitignore` file will not untrack them -- they will remain tracked by Git.
+
+To untrack files, it is necessary to remove from the repository the tracked files listed in `.gitignore` file. Then re-add them and commit your changes.
+
+The easiest, most thorough way to do this is to remove and cache all files in the repository, then add them all back. All folders/files listed in `.gitignore` file will not be tracked. From the top folder in the repository run the following commands:
+
+```sh
+git rm -r --cached .
+```
 
 ## Deploy on Digital Ocean
 
@@ -256,7 +269,7 @@ sudo -u postgres psql
 
 # Create a new database
 create database msdb;
-CREATE USER manuciao WITH PASSWORD 's@xlTI!I8^ke';
+CREATE USER manuciao WITH PASSWORD 'your_postgres_password';
 ALTER ROLE manuciao SET client_encoding TO 'utf8';
 ALTER ROLE manuciao SET default_transaction_isolation TO 'read committed';
 ALTER ROLE manuciao SET timezone TO 'UTC';

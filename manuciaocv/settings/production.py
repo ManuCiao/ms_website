@@ -39,7 +39,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': os.getenv('POSTGRES_NAME', 'msdb'),
         'USER': os.getenv('POSTGRES_USER', 'manuciao'),
-        # 'PASSWORD': os.getenv('POSTGRES_PASSWORD', 's@xlTI!I8^ke'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', 's@xlTI!I8^ke'),
         'HOST': os.getenv('POSTGRES_SERVICE_HOST', 'localhost'),
         'PORT': os.getenv('POSTGRES_PORT', '5432'),
     }

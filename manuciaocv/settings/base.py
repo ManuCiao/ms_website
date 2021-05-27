@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(PROJECT_DIR)
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -85,10 +85,13 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'manuciaocv.urls'
 
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['manuciaocv/templates', ],
+        'DIRS': [
+            os.path.join(PROJECT_DIR, 'templates'), 
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -102,21 +105,8 @@ TEMPLATES = [
     },
 ]
 
+
 WSGI_APPLICATION = 'manuciaocv.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'msdb',
-        'USER': 'postgres',
-        'HOST': 'localhost',
-        'PORT': 5432
-    }
-}
 
 
 # Password validation
@@ -178,21 +168,15 @@ MEDIA_URL = '/media/'
 
 # Wagtail settings
 
-WAGTAIL_SITE_NAME = "mn-sabatino"
+WAGTAIL_SITE_NAME = "manuciaocv"
 WAGTAILEMBEDS_RESPONSIVE_HTML = True
 WAGTAILMARKDOWN_AUTODOWNLOAD_FONTAWESOME = False
 
 # Forms
 # the label of the forms area in the admin sidebar
 WAGTAILSTREAMFORMS_ADMIN_MENU_LABEL = 'Streamforms'
-WAGTAILSTREAMFORMS_ADMIN_MENU_ICON = 'forms'
-
-# the order of the forms area in the admin sidebar
 WAGTAILSTREAMFORMS_ADMIN_MENU_ORDER = None
-
 WAGTAILSTREAMFORMS_ADVANCED_SETTINGS_MODEL = 'home.AdvancedFormSetting'
-
-# the default form template choices
 WAGTAILSTREAMFORMS_FORM_TEMPLATES = (
     ('streamforms/form_block.html', ("Default Form Template")),  # default
     ('streams/custom_form.html', ("Custom Form Template")),
@@ -200,4 +184,4 @@ WAGTAILSTREAMFORMS_FORM_TEMPLATES = (
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://mn-sabatino.com'
+BASE_URL = 'http://example.com'

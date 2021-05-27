@@ -4,6 +4,7 @@ static
 manuciaocv/settings/local.py
 datadump.json
 msdb.dump
+*.vscode
 
 
 # Created by https://www.toptal.com/developers/gitignore/api/django,python,node,sass
@@ -15,6 +16,7 @@ msdb.dump
 *.pyc
 __pycache__/
 local_settings.py
+local.py
 db.sqlite3
 db.sqlite3-journal
 media
