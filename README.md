@@ -285,6 +285,7 @@ mkdir ~/ms-website && cd ~/ms-website
 
 ```sh
 git clone https://github.com/ManuCiao/ms_website.git .
+git config pull.ff only
 ```
 
 - Run the following commands:
@@ -297,6 +298,10 @@ pip freeze
 pip install gunicorn psycopg2-binary
 pip install -r requirements.txt
 python manage.py collectstatic --settings=manuciaocv.settings.production
+sudo apt install npm
+npm install
+npm run build
+
 export DJANGO_SETTINGS_MODULE='manuciaocv.settings.production'
 echo $DJANGO_SETTINGS_MODULE
 python manage.py runserver 0.0.0.0:8000
@@ -313,6 +318,108 @@ http://159.65.89.185:8000/
 
 # to transfer the db dump from your local machine to remote machine
 rsync /path/to/local/file username@PCB:/path/to/remote/destination
+rsync '/home/dev01/Downloads/Personal/website/theme_portfolio_cv/ms_website/msdb.dump' manuciao@159.65.89.185:/home/manuciao/ms-website
+rsync -a '/home/dev01/Downloads/Personal/website/theme_portfolio_cv/ms_website/media' manuciao@159.65.89.185:/home/manuciao/ms-website
+
+# restore db from pg_dump
+pg_restore --verbose --clean --no-acl --no-owner --host localhost --dbname  msdb -U manuciao msdb.dump
+
+
+# Run gunicorn on port 8000
+gunicorn --bind 0.0.0.0:8000 manuciaocv.wsgi 
+deactivate
+sudo nano /etc/systemd/system/gunicorn.socket
+
+# Add this to the file `/etc/systemd/system/gunicorn.socket`:
+[Unit]
+Description=gunicorn socket
+
+[Socket]
+ListenStream=/run/gunicorn.sock
+
+[Install]
+WantedBy=sockets.target
+
+# Create a systemd file for gunicorn with sudo privileges
+sudo nano /etc/systemd/system/gunicorn.service
+# And add this into it:
+
+[Unit]
+Description=gunicorn daemon
+Requires=gunicorn.socket
+After=network.target
+
+[Service]
+User=manuciao
+Group=www-data
+WorkingDirectory=/home/manuciao/ms-website
+ExecStart=/home/manuciao/ms-website/wbmanu/bin/gunicorn \
+        --access-logfile - \
+        --workers 3 \
+        --bind unix:/run/gunicorn.sock \
+        manuciaocv.wsgi:application
+
+[Install]
+WantedBy=multi-user.target
+
+#  Start and enable the gunicorn
+sudo systemctl start gunicorn.socket && sudo systemctl enable gunicorn.socket 
+sudo systemctl status gunicorn.socket
+
+# Check the existence of the new socket file
+file /run/gunicorn.sock 
+
+# Check the gunicorn status with
+sudo systemctl status gunicorn # You should see INACTIVE DEAD
+# Test the socket activation with a curl command
+curl --unix-socket /run/gunicorn.sock localhost
+# Reoad gunicorn
+sudo systemctl daemon-reload && sudo systemctl restart gunicorn
+
+# Create a new server block in nginx
+sudo nano /etc/nginx/sites-available/ms-website And add this:
+
+server {
+    listen      80;
+    listen      [::]:80;
+    server_name 159.65.89.185 mn-sabatino.com;
+    charset     UTF-8;
+
+    error_log   /home/manuciao/ms-website/nginx-error.log;
+    location = /favicon.ico { access_log off; log_not_found off; }
+    location /static/ {
+        alias /home/manuciao/ms-website/static/;
+    }
+
+    location /media/ {
+        alias /home/manuciao/ms-website/media/;
+    }
+
+    location / {
+        include proxy_params;
+        proxy_pass http://unix:/run/gunicorn.sock;
+    }
+}
+
+
+# Create a file by linking it to the sites-enabled directory
+sudo ln -s /etc/nginx/sites-available/ms-website /etc/nginx/sites-enabled
+# Test nginx with:
+sudo nginx -t
+# If there were no errors, restart nginx
+sudo systemctl restart nginx 
+sudo systemctl status nginx  #to see that it is running
+
+# Open the firewall to normal traffic with Nginx, and delete port 8000
+sudo ufw delete allow 8000 && sudo ufw allow 'Nginx Full'
+sudo ufw status
+# If NGINX shows the welcome to nginx page, double check your server_name ip in your nginx config file (the one we created earlier). Add your IP to your domain DNS. When launching your website update your nginx settings
+sudo nano /etc/nginx/sites-available/yourprojectname Replace 167.172.xxx.xx with yourwebsite.com
+# Test nginx settings with
+sudo nginx -t
+# Restart nginx with
+sudo systemctl restart nginx 
+
 ```
 
 - Follow this [tutorial](https://learnwagtail.com/launch-your-wagtail-website-digital-ocean-ubuntu-18/)

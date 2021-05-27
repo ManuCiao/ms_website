@@ -10,15 +10,15 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 ALLOWED_HOSTS = ['localhost', 'mn-sabatino.com', '159.65.89.185']
 
-cwd = os.getcwd()
+# cwd = os.getcwd()
 
-CACHES = {
-    "default": {
-        "BACKEND":
-        "django.core.cache.backends.filebased.FileBasedCache",
-        "LOCATION": f"{cwd}/.cache"
-    }
-}
+# CACHES = {
+#     "default": {
+#         "BACKEND":
+#         "django.core.cache.backends.filebased.FileBasedCache",
+#         "LOCATION": f"{cwd}/.cache"
+#     }
+# }
 
 
 try:
