@@ -269,6 +269,30 @@ ALTER ROLE manuciao SET timezone TO 'UTC';
 GRANT ALL PRIVILEGES ON DATABASE msdb TO manuciao;
 ```
 
+- Upgrade pip and install virtualenv
+
+```sh
+sudo -H pip3 install --upgrade pip && sudo -H pip3 install virtualenv
+```
+
+- Create a new project directory
+
+```sh
+mkdir ~/ms-website && cd ~/ms-website
+```
+
+- Clone your project from github into this directory (Add the "." at the ed it will add all the files in that folder)
+
+```sh
+git clone https://github.com/ManuCiao/ms_website.git .
+```
+
+sudo apt install python3.9-venv
+python3 -m venv wbmanu
+source wbmanu/bin/activate
+pip install gunicorn psycopg2-binary
+pip install -r requirements.txt
+
 - Follow this [tutorial](https://learnwagtail.com/launch-your-wagtail-website-digital-ocean-ubuntu-18/)
 
 -----------------------------------------------------------------------
