@@ -10,26 +10,19 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 ALLOWED_HOSTS = ['localhost', 'mn-sabatino.com', '159.65.89.185']
 
-# cwd = os.getcwd()
+cwd = os.getcwd()
 
-# CACHES = {
-#     "default": {
-#         "BACKEND":
-#         "django.core.cache.backends.filebased.FileBasedCache",
-#         "LOCATION": f"{cwd}/.cache"
-#     }
-# }
-
-
-try:
-    from .local import *
-except ImportError:
-    pass
-
+CACHES = {
+    "default": {
+        "BACKEND":
+        "django.core.cache.backends.filebased.FileBasedCache",
+        "LOCATION": f"{cwd}/.cache"
+    }
+}
 
 # django-debug-toolbar will throw an ImproperlyConfigured exception if DEBUG is
 # ever turned on when run with a WSGI server
-DEBUG_TOOLBAR_PATCH_SETTINGS = False
+# DEBUG_TOOLBAR_PATCH_SETTINGS = False
 
 
 # EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -74,3 +67,10 @@ sentry_sdk.init(
     # django.contrib.auth) you may enable sending PII data.
     send_default_pii=True
 )
+
+
+
+try:
+    from .local import *
+except ImportError:
+    pass

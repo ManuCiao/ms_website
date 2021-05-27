@@ -319,6 +319,7 @@ http://159.65.89.185:8000/
 # to transfer the db dump from your local machine to remote machine
 rsync /path/to/local/file username@PCB:/path/to/remote/destination
 rsync '/home/dev01/Downloads/Personal/website/theme_portfolio_cv/ms_website/msdb.dump' manuciao@159.65.89.185:/home/manuciao/ms_website
+rsync '/home/dev01/Downloads/Personal/website/theme_portfolio_cv/ms_website/.env' manuciao@159.65.89.185:/home/manuciao/ms_website
 rsync -a '/home/dev01/Downloads/Personal/website/theme_portfolio_cv/ms_website/media' manuciao@159.65.89.185:/home/manuciao/ms_website
 
 # restore db from pg_dump
@@ -373,11 +374,12 @@ file /run/gunicorn.sock
 sudo systemctl status gunicorn # You should see INACTIVE DEAD
 # Test the socket activation with a curl command
 curl --unix-socket /run/gunicorn.sock localhost
-# Reoad gunicorn
+# Reload gunicorn
 sudo systemctl daemon-reload && sudo systemctl restart gunicorn
 
 # Create a new server block in nginx
-sudo nano /etc/nginx/sites-available/ms_website And add this:
+sudo nano /etc/nginx/sites-available/ms_website 
+# And add this:
 
 server {
     listen      80;
