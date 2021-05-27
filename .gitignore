@@ -1,6 +1,6 @@
 wbmanu
 static_root
-static
+/static/
 manuciaocv/settings/local.py
 datadump.json
 msdb.dump
