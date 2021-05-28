@@ -754,7 +754,7 @@ transform: translate(-50%,-50%);
 	padding:0;
 }
 .port_bannerbg_wrapper {
-    background: url(http://via.placeholder.com/1902x952);
+    background: url(../images/pm_bg.jpg);
 	background-size:cover;
 	-webkit-animation: moveup 50s linear infinite;
     -moz-animation: moveup 50s linear infinite;
