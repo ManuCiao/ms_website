@@ -224,7 +224,7 @@ git rm -r --cached .
 - Root into the ubuntu server by typing on the terminal
 
 ```sh
-ssh root@159.65.89.185
+ssh root@mn-sabatino.com
 ```
 
 - Create new user on the ubuntu server and make it sudo user
@@ -252,7 +252,7 @@ rsync --archive --chown=manuciao:manuciao ~/.ssh /home/manuciao
 - Access the ubuntu server with the new user
 
 ```sh
-ssh manuciao@159.65.89.185
+ssh manuciao@mn-sabatino.com
 ```
 
 - Update Ubuntu
@@ -321,15 +321,15 @@ sudo ufw status
 python manage.py runserver 0.0.0.0:8000
 
 # go to your browser using your IP address from Digital Ocean:
-http://159.65.89.185:8000/
+http://mn-sabatino.com:8000/
 
 # to transfer the db dump from your local machine to remote machine
 rsync /path/to/local/file username@PCB:/path/to/remote/destination
-rsync '/home/dev01/Downloads/Personal/website/theme_portfolio_cv/ms_website/msdb.dump' manuciao@159.65.89.185:/home/manuciao/ms_website
-rsync '/home/dev01/Downloads/Personal/website/theme_portfolio_cv/ms_website/.env' manuciao@159.65.89.185:/home/manuciao/ms_website
-rsync -a '/home/dev01/Downloads/Personal/website/theme_portfolio_cv/ms_website/media' manuciao@159.65.89.185:/home/manuciao/ms_website
+rsync '/home/dev01/Downloads/Personal/website/theme_portfolio_cv/ms_website/msdb.dump' manuciao@mn-sabatino.com:/home/manuciao/ms_website
+rsync '/home/dev01/Downloads/Personal/website/theme_portfolio_cv/ms_website/.env' manuciao@mn-sabatino.com:/home/manuciao/ms_website
+rsync -a '/home/dev01/Downloads/Personal/website/theme_portfolio_cv/ms_website/media' manuciao@mn-sabatino.com:/home/manuciao/ms_website
 
-rsync '/home/dev01/Downloads/Personal/website/theme_portfolio_cv/ms_website/manuciaocv/settings/local.py' manuciao@159.65.89.185:/home/manuciao/ms_website/manuciaocv/settings/
+rsync '/home/dev01/Downloads/Personal/website/theme_portfolio_cv/ms_website/manuciaocv/settings/local.py' manuciao@mn-sabatino.com:/home/manuciao/ms_website/manuciaocv/settings/
 
 # restore db from pg_dump
 pg_restore --verbose --clean --no-acl --no-owner --host localhost --dbname  msdb -U manuciao msdb.dump
@@ -393,7 +393,7 @@ sudo nano /etc/nginx/sites-available/ms_website
 server {
     listen      80;
     listen      [::]:80;
-    server_name 159.65.89.185 mn-sabatino.com;
+    server_name mn-sabatino.com;
     charset     UTF-8;
 
     error_log   /home/manuciao/ms_website/nginx-error.log;
@@ -425,7 +425,8 @@ sudo systemctl status nginx  #to see that it is running
 sudo ufw delete allow 8000 && sudo ufw allow 'Nginx Full'
 sudo ufw status
 # If NGINX shows the welcome to nginx page, double check your server_name ip in your nginx config file (the one we created earlier). Add your IP to your domain DNS. When launching your website update your nginx settings
-sudo nano /etc/nginx/sites-available/yourprojectname Replace 167.172.xxx.xx with yourwebsite.com
+sudo nano /etc/nginx/sites-available/manuciao
+# Replace 167.172.xxx.xx with yourwebsite.com
 # Test nginx settings with
 sudo nginx -t
 # Restart nginx with
@@ -442,10 +443,73 @@ WHERE
 	pg_stat_activity.datname = 'msdb'
 	AND pid <> pg_backend_pid();
 
+sudo tail -F /home/manuciao/ms_website/nginx-error.log
+
+
+# report error permission denied for nginx
+sudo nano /etc/nginx/nginx.conf 
+# By default `nginx.conf` user is `www-data`.
+
+user www-data;
+worker_processes auto;
+pid /run/nginx.pid;
+
+# Then I replaced with my sudo user and solved my problem. 😀
+user manuciao;
+worker_processes auto;
+pid /run/nginx.pid;
+
+# Then I restart nginx, gunicorn and postgresql
+sudo systemctl restart nginx 
+sudo systemctl restart gunicorn
+sudo systemctl restart postgresql
+
+# Add 167.172.xxx.xx to your domain DNS settings and wait for it to propogate. View your new website at yourwebsite.com
+# Update the wagtail site settings
+# Go to http://yourwebsite.com/admin/sites/2/ and: change localhost to yourwebsite.com 
+
+# Add www.yourwebsite.com and SSL
+sudo nano /etc/nginx/sites-available/ms_website
+
+server {
+    listen      80;
+    listen      [::]:80;
+    server_name mn-sabatino.com www.mn-sabatino.com;
+    charset     UTF-8;
+
+# To avoid a possible hash bucket memory problem that can arise from adding additional server names
+sudo nano /etc/nginx/nginx.conf
+
+http {
+    ...
+    server_names_hash_bucket_size 64;
+    ...
+}
+
+
+sudo nginx -t
+sudo systemctl restart nginx
+
+# Add SSL to your website with let's encrypt
+sudo apt install certbot python3-certbot-nginx
+sudo certbot --nginx -d mn-sabatino.com -d www.mn-sabatino.com
+sudo systemctl status certbot.timer
+sudo certbot renew --dry-run
+#Since Let’s Encrypt certificates expire every 90 days, Nginx recommends setting up and automatic renewal cron job.
+#1. First, open the crontab configuration file for the current user:
+crontab -e
+#2. Add a cron job that runs the certbot command, which renews the certificate if it detects the certificate will expire within 30 days. Schedule it to run daily at a specified time (in this example, it does so at 05:00 a.m.):
+0 5 * * * /usr/bin/certbot renew --quiet
+ #You can now go to [ssllabs.com/ssltest/](https://www.ssllabs.com/ssltest/analyze.html?d=mn%2dsabatino.com&latest) and run an SSL test on your domain.
+
+
 
 ```
 
 - Follow this [tutorial](https://learnwagtail.com/launch-your-wagtail-website-digital-ocean-ubuntu-18/)
+- Follow this [Digital ocean tutorial](https://www.digitalocean.com/community/tutorials/how-to-set-up-django-with-postgres-nginx-and-gunicorn-on-ubuntu-20-04)
+- Follow this [Nginx server block](https://www.digitalocean.com/community/tutorials/how-to-install-nginx-on-ubuntu-20-04#step-5-%E2%80%93-setting-up-server-blocks-(recommended))
+- Follow this [Let's Encrypt](https://www.digitalocean.com/community/tutorials/how-to-secure-nginx-with-let-s-encrypt-on-ubuntu-20-04)
 
 -----------------------------------------------------------------------
 
