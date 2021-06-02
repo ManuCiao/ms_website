@@ -513,6 +513,17 @@ crontab -e
 
 -----------------------------------------------------------------------
 
+## TODO list
+
+- Add Redis as Cache server
+- Improve Contact form
+- Split CSS style into SASS files per block
+- Ansible script to deploy app
+- Dockerise
+- Create personal logo
+- Add more projects
+
+-----------------------------------------------------------------------
 ## Reference
 
 - [Installing packages using pip and virtual environments](https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/)

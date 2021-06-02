@@ -1,4 +1,5 @@
 from django.conf import settings
+from django.contrib import messages #import messages
 from django.core.mail import EmailMessage
 from django.template.defaultfilters import pluralize
 

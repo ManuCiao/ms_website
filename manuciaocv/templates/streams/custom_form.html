@@ -1,14 +1,6 @@
 
 {% load static wagtailimages_tags wagtailcore_tags %}
 
-{% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li {% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
-
 <!-- start contact wrapper  -->
 <div class="port_contact_wrapper prt_toppadder80 page_scroll" data-scroll="3" id="contact_sec">
     <div class="container">
@@ -40,6 +32,7 @@
         <!-- start Contact section  -->
         <div class="contact_section">
             <div class="container">
+
                 <div class="port_contact_mainbox">
                     <div class="row">
                         <div class="col-md-12 text-center prt_bottompadder40 ">
@@ -48,8 +41,11 @@
                             </div>
                         </div>
                         <div class="col-12">
+                            {% include 'partials/messages.html' %}
+                        </div>
+                        <div class="col-12">
                             <div class="port_contact_form">
-                                <form{% if form.is_multipart %} enctype="multipart/form-data"{% endif %} action="{{ value.form_action }}" method="post" class="needs-validation" novalidate>
+                                <form {% if form.is_multipart %} enctype="multipart/form-data"{% endif %} action="{{ value.form_action }}" method="post" class="needs-validation" novalidate>
                                 <div class="row">
                                         {{ form.media }}
                                         {% csrf_token %}
@@ -57,7 +53,7 @@
                                         {% for field in form.visible_fields %}
                                         <div class="col-12">
                                             <div class="form-group">
-                                                {% include "streams/partials/form_field.html" %}
+                                                {% include "partials/form_field.html" %}
                                             </div>
                                         </div>
                                         {% endfor %}
@@ -70,7 +66,7 @@
                                                 </button>
                                             </div>
                                         </div>
-                                        <!-- <div class="response"></div> -->
+                                        {% comment %} <div class="response"></div> {% endcomment %}
                                     </div>
                                 </form>
                             </div>

@@ -17,7 +17,12 @@
     <!-- start banner wrapper -->
     <div class="port_banner_wrapper" id="cv_container">
         <div class="container-fluid">
+            
+
             <div class="row">
+            <div class="col-xl-12 col-lg-12 col-md-12 align-self-center">
+            {% include 'partials/messages.html' %}
+            </div>
                 <div class="banner_img_wrapper">
                     <div class="banner_img">
                         <div class="banner_rcontent vert-move">
@@ -95,20 +100,20 @@
 <!-- ================== start inner section ================== -->
 
 <div class="port_sec_warapper">
-    
+
     {% block content %}
     {% if not request.is_preview %}
-        {# LIVE #}
-        {% cache 2592000 home_page_streams page.id %}
-            {% for block in page.body %}
-                {% include_block block %}
-            {% endfor %}
-        {% endcache %}
+    {# LIVE #}
+    {% cache 2592000 home_page_streams page.id %}
+    {% for block in page.body %}
+    {% include_block block %}
+    {% endfor %}
+    {% endcache %}
     {% else %}
-        {# PREVIEW #}
-        {% for block in page.body %}
-            {% include_block block %}
-        {% endfor %}
+    {# PREVIEW #}
+    {% for block in page.body %}
+    {% include_block block %}
+    {% endfor %}
     {% endif %}
     {% endblock content %}
 
