@@ -30,6 +30,7 @@ ALLOWED_HOSTS = ['*']
 # Application definition
 
 INSTALLED_APPS = [
+    'wagtailstreamforms',
     'home',
     'search',
     'flex',
@@ -58,7 +59,6 @@ INSTALLED_APPS = [
     'taggit',
     'wagtailmarkdown',
     'wagtailfontawesome',
-    'wagtailstreamforms',
 
     'django.contrib.admin',
     'django.contrib.auth',
