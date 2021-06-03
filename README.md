@@ -503,6 +503,20 @@ crontab -e
  #You can now go to [ssllabs.com/ssltest/](https://www.ssllabs.com/ssltest/analyze.html?d=mn%2dsabatino.com&latest) and run an SSL test on your domain.
 
 
+## TO UPDATE THE SERVER
+Pull all the .env and .local files from local machine `rsync <local path> <remote path>`
+Pull github repo `git pull`
+Restart nginx and gunicorn `sudo systemctl restart nginx` `sudo systemctl restart gunicorn`
+Update `.local` file with the .env details
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.getenv('POSTGRES_NAME', ''),
+        'USER': os.getenv('POSTGRES_USER', ''),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', ''),
+        'HOST': os.getenv('POSTGRES_SERVICE_HOST', ''),
+    }
+}
 
 ```
 
