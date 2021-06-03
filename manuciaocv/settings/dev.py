@@ -1,4 +1,3 @@
-import os
 from .base import *
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -13,7 +12,7 @@ ALLOWED_HOSTS = ['*']
 # Email
 
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-DEFAULT_FROM_EMAIL = 'Django <no_reply@example.com>'
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
 
 INSTALLED_APPS += [
     'debug_toolbar',

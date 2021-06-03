@@ -1,16 +1,7 @@
-import os
-from .base import *
-from os.path import join, dirname
-from dotenv import load_dotenv
-from pathlib import Path
-
-
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
-load_dotenv()
-env_path = Path('.')/'.env'
-load_dotenv(dotenv_path=env_path)
+from .base import *
 
 DEBUG = False
 SECRET_KEY = os.getenv('SECRET_KEY')
@@ -31,15 +22,17 @@ CACHES = {
 # ever turned on when run with a WSGI server
 # DEBUG_TOOLBAR_PATCH_SETTINGS = False
 
+SENDGRID_API_KEY = os.getenv('SENDGRID_API_KEY')
 
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.sendgrid.net'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
-# EMAIL_HOST_USER = ''
-# EMAIL_HOST_PASSWORD = ''
-# DEFAULT_FROM_EMAIL = ''
-# SERVER_EMAIL = ''
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'apikey' # this is exactly the value 'apikey'
+EMAIL_HOST_PASSWORD = SENDGRID_API_KEY
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+
+DEFAULT_FROM_EMAIL = os.getenv('DEFAULT_FROM_EMAIL')
+
 
 DATABASES = {
     'default': {
